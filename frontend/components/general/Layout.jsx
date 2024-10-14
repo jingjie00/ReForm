@@ -98,12 +98,9 @@ function Layout(props) {
                   <div className="">
                     <div
                       id="pageHeader"
-                      className=" z-50 bg-white pb-1 pt-3 px-5 flex justify-between align-center shadow-xl shadow shadow-gray-200"
+                      className=" z-50 bg-white pb-1 pt-3 px-5 flex justify-center align-center shadow-xl shadow shadow-gray-200"
                     >
-                      <div className="flex justify-between gap-3">
-                        {" "}
-                        <span className="md:-mt-1 ml-0.5 w-[150px] h-[150px] cursor-pointer">
-                          <img
+                     <img
                             alt="EvestAI Logo"
                             onClick={() => {
                               dispatch(SettingActions.setLoading(true));
@@ -114,14 +111,10 @@ function Layout(props) {
                             }}
                             src="/images/logo.png"
                           />
-                        </span>
-                 
-                       
-                      </div>
 
-                      <div className="flex items-center align-center">
+                      {/* <div className="flex items-center align-center">
                         <MenuSection menuRow={middleMenu} />
-                      </div>
+                      </div> */}
 
                  
                       <div className="col-span-5 col-start-8 md:col-span-10 flex items-center align-center ">

@@ -2,7 +2,7 @@ import { createChatBotMessage } from "react-chatbot-kit";
 import PaymentButton2 from "./PaymentButton2";
 
 const config2 = {
-  botName: "HealthMe",
+  botName: "reForm",
   initialMessages: [
     createChatBotMessage(
       `Good Morning, Jason`),

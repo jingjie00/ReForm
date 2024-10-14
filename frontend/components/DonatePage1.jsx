@@ -25,7 +25,7 @@ const postApi = () => {
           "sk_59bb96279047f2365169a00b7ced5e4d39f5ed5e7da417b3d5c1d849dd697318",
       },
       data: {
-        name: "HealthMe Entity " + uniqueID,
+        name: "reForm Entity " + uniqueID,
       },
     })
     .then((response) => console.log(response))

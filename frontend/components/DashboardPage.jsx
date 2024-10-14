@@ -390,7 +390,7 @@ function DashboardPage({ data }) {
             style={{ backgroundImage: 'url(/images/welcomeBanner.png)' }}
           >
             <h1 className='ml-14 text-3xl font-bold text-gray-800 animate-bounce'>
-              Welcome to HealthMe, {username || 'Jason'}
+              Welcome to reForm, {username || 'Jason'}
             </h1>
             <p  className='mt-2 ml-14 text-xl text-gray-800'>
               Your Wealth For All. The Help For Everyone
