@@ -102,7 +102,7 @@ function Layout(props) {
                     >
                       <div className="flex justify-between gap-3">
                         {" "}
-                        <span className="md:-mt-1 ml-0.5 w-[50px] h-[50px] cursor-pointer">
+                        <span className="md:-mt-1 ml-0.5 w-[150px] h-[150px] cursor-pointer">
                           <img
                             alt="EvestAI Logo"
                             onClick={() => {
@@ -112,7 +112,7 @@ function Layout(props) {
                               dispatch(SettingActions.setSelected(null));
                               dispatch(SettingActions.setLoading(false));
                             }}
-                            src="/images/logoCircle.png"
+                            src="/images/logo.png"
                           />
                         </span>
                  
