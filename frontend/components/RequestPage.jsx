@@ -117,7 +117,7 @@ else{
 
                <div className='flex gap-4'>
                 {showImage1 &&  <img src="/images/image2.jpeg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)}/>}
-                {showImage2 &&  <img src="/images/image1.jpeg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)}/>}
+                {showImage2 &&  <img src="/images/user_submit.jpg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)}/>}
 
                
                </div>
