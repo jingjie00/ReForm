@@ -1,8 +1,8 @@
 <p align="center">
   <a href="" rel="noopener">
- <img src="./logo.png" alt="HealthUs"></a>
+ <img src="./logo.png" alt="reForm"></a>
 </p>
-<h1 align="center">HealthMe</h1>
+<h1 align="center">reForm</h1>
 
 
 ## 📝 Table of Contents
@@ -17,7 +17,7 @@
 
 ## 🧐 Project Name <a id = "project_name"></a>
 
-Our project name is called HealthMe.
+Our project name is called reForm.
 
 ## 💡 Tagline <a id = "tagline"></a>
 
