@@ -1,273 +1,105 @@
-/* eslint-disable jsx-a11y/mouse-events-have-key-events */
-/* eslint-disable camelcase */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable jsx-quotes */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useRef, useState, useEffect } from "react";
-
-import { useRouter } from "next/router";
-import { Carousel } from "react-responsive-carousel";
-import { useDispatch, useSelector } from "react-redux";
-import cloneDeep from "lodash/cloneDeep";
-// import Link from 'next/link';
-import _ from "lodash";
-import Aos from "aos";
-import { Button, message, Space } from "antd";
-import { ArrowRightOutlined } from "@ant-design/icons";
-import Layout from "./general/Layout";
-import { setLoading, SettingActions } from "./reducers/settingReducer";
-import { logoIcon } from "../images";
-import { routes } from "../route";
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import Aos from 'aos';
+import Layout from './general/Layout';
+import { SettingActions } from './reducers/settingReducer';
+import Chatbot from "react-chatbot-kit";
+import config1 from "./chatbot1/config1";
+import MessageParser1 from "./chatbot1/MessageParser1";
+import ActionProvider1 from "./chatbot1/ActionProvider1";
+import Dragger from 'antd/lib/upload/Dragger';
+import { UploadOutlined } from '@ant-design/icons';
+import { Button, Form } from 'antd';
+import { useFetcher } from 'react-router-dom';
 import axios from "axios";
-
-const postCreateWalletApi = () => {
-  var uniqueID = crypto.randomUUID();
-  return axios
-    .request({
-      method: "POST",
-      url: "https://service-testnet.maschain.com/api/wallet/create-user",
-      headers: {
-        "Content-Type": "application/json",
-        client_id:
-          "0264a6a2135d0b766d212db38a1a0fcd2334c651acb32b69098c2fb0c6c98db9",
-        client_secret:
-          "sk_59bb96279047f2365169a00b7ced5e4d39f5ed5e7da417b3d5c1d849dd697318",
-      },
-      data: {
-        name: "HealthMe User " + uniqueID,
-        email: uniqueID + "@healthme.com",
-        ic: "HealthMe ic",
-        phone: "HealthMe ic",
-        entity_id: 12,
-      },
-    })
-    .then((response) => console.log(response))
-    .catch((error) => false);
-};
 
 function LoginPage({ data }) {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [messageApi, contextHolder] = message.useMessage();
-  const [activeTab, setActiveTab] = useState("login");
-  const [allowLogin, setAllowLogin] = useState(false);
+  const [showImage1, setShowImage1] = useState(false);
+  const [showImage2, setShowImage2] = useState(false);
+  const [showImage3, setShowImage3] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+
   useEffect(() => {
     dispatch(SettingActions.setLoading(false));
     Aos.init();
-    //postCreateWalletApi();
+    // putWalletApi();
   }, []);
 
-  useEffect(() => {
-    dispatch(SettingActions.setLoading(false));
-    Aos.init();
-  }, [dispatch]);
-
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
+  const verifyUploadProps = {
+    name: 'attachments',
+    multiple: true,
+    // accept: 'image/jpg, .pdf',
+    async onChange(e) {
+      if (e.fileList.length > 1) {
+        await navigator.clipboard.writeText('I have uploaded my salary slip.');
+        setShowImage1(true);
+      } else {
+        await navigator.clipboard.writeText('Here, I have uploaded the invoice.');
+        setShowImage2(true);
+      }
+    },
+    onDrop(e) {
+      // uploadToServer(e);
+    },
   };
 
   return (
     <Layout>
-      <div className="text-xl flex flex-col justify-center items-center my-24">
-        <div className="flex mb-4">
-          <button
-            onClick={() => handleTabChange("login")}
-            className={`px-6 py-2 font-bold text-2xl ${
-              activeTab === "login"
-                ? "border-b-2 border-red-500"
-                : "text-gray-700"
-            }`}
-          >
-            Log In
-          </button>
-          <button
-            onClick={() => handleTabChange("signup")}
-            className={`px-6 py-2 font-bold text-2xl ${
-              activeTab === "signup"
-                ? "border-b-2 border-red-500"
-                : "text-gray-700"
-            }`}
-          >
-            Sign Up
-          </button>
+      <div className='flex flex-row h-5/6'>
+        <div className='w-1/3 p-4'>
+          <Chatbot
+            config={config1}
+            messageParser={MessageParser1}
+            actionProvider={ActionProvider1}
+          />
+
+          {showSuccess && <div className="payment-success">Request Successful!</div>}
+
+          <div className='w-full'>
+            <Button onClick={() => { setShowImage3(true) }} className='w-full cursor-none bg-black text-white rounded-lg px-5 py-3 my-5'></Button>
+          </div>
         </div>
-        {activeTab === "signup" && (
-          <div className="border border-gray-300 p-8 shadow-lg w-1/2 rounded-3xl">
-            <div className="mb-4 flex align-center justify-center items-center flex-col">
-              <img
-                src="./images/logoCircle.png"
-                alt="logo"
-                className="w-16 flex content-center align-center justify-center items-center"
-              />
-              <h1 className="text-blue-700 font-bold text-base">
-                KYC Submission
-              </h1>
-            </div>
-            <form>
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-gray-700">
-                  Email*
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
-                  placeholder="Enter your email"
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="name" className="block text-gray-700">
-                  Legal name (as it appears to MyKad/Passport)*
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
-                  placeholder="Enter your name"
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="username" className="block text-gray-700">
-                  Username*
-                </label>
-                <input
-                  type="text"
-                  id="username"
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
-                  placeholder="Enter your username"
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="phone" className="block text-gray-700">
-                  Phone Number*
-                </label>
-                <div className="flex">
-                  <select className="w-1/4 px-3 py-2 border border-gray-300 rounded-l">
-                    <option value="+60">+60 (MY)</option>
-                    <option value="+65">+65 (SG)</option>
-                    <option value="+62">+62 (ID)</option>
-                    <option value="+63">+63 (PH)</option>
-                  </select>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className="w-3/4 px-3 py-2 border border-gray-300 rounded-r"
-                    placeholder="Enter your phone number"
-                  />
-                </div>
-              </div>
-              <div className="mb-4">
-                <label htmlFor="password" className="block text-gray-700">
-                  Password*
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
-                  placeholder="Enter your password"
-                />
-                <p className="block text-gray-700 text-opacity-60">
-                  Password must have at least 8 characters, at least 1
-                  Uppercase, at least 1 Lowercase , at least 1 Number and at
-                  least 1 Special Character(@, $, !, *, %, ?, #, &, _)
-                </p>
-              </div>
-              <div className="mb-4">
-                <label htmlFor="password" className="block text-gray-700">
-                  Re-enter your Password*
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
-                  placeholder="Enter your password again"
-                />
-              </div>
-              <div className="w-full py-2 flex align-center justify-center items-center">
-                <input type="checkbox" id="agree" name="agree" />
-                <label for="agree">
-                  I agree to the{" "}
-                  <a className="cursor-pointer text-blue-700">Privacy Policy</a>{" "}
-                  and{" "}
-                  <a className="cursor-pointer text-blue-700">
-                    Terms & Conditions
-                  </a>
-                </label>
-              </div>
-              <button
-                type="button" // Change to 'button' to prevent form submission
-                className="w-full bg-red-500 text-white py-2 px-4 rounded font-bold"
-              >
-                Sign Up
-              </button>
-            </form>
-          </div>
-        )}
-        {activeTab === "login" && (
-          <div className="border border-gray-300 p-8 shadow-lg w-full max-w-sm rounded-3xl">
-            <div className="mb-4 flex align-center justify-center items-center flex-col">
-              <img
-                onClick={() => {
-                  setAllowLogin(true);
-                }}
-                src="./images/logoCircle.png"
-                alt="logo"
-                className="w-16 content-center"
-              />
-              <h1 className="text-blue-700 font-bold text-base">Welcome</h1>
-            </div>
-            <form>
-              <div className="mb-4">
-                <label htmlFor="signup-email" className="block text-gray-700">
-                  Email:
-                </label>
-                <input
-                  type="email"
-                  id="signup-email"
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
-                  placeholder="Enter your email"
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="signup-password"
-                  className="block text-gray-700"
-                >
-                  Password:
-                </label>
-                <input
-                  type="password"
-                  id="signup-password"
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
-                  placeholder="Enter your password"
-                />
-              </div>
-
-              <button
-                type="button" // Change to 'button' to prevent form submission
-                className="w-full bg-red-500 text-white py-2 px-4 rounded font-bold"
-                onClick={() => {
-                  if (allowLogin) {
-                    dispatch(SettingActions.setIsLogin(true));
-                    dispatch(SettingActions.setUsername("Jason"));
-                    router.push("/dashboard");
-                  } else {
-                    dispatch(SettingActions.setLoading(true));
-
-                    setTimeout(() => {
-                      dispatch(SettingActions.setLoading(false));
-                      message.error("Wrong login credentials");
-                    }, 1000);
-                  }
+        <div className='w-2/3 p-4'>
+        {!showImage3 &&  <Dragger {...verifyUploadProps}>
+            <div className='p-3 w-full border rounded-lg flex flex-col mt-2.5'>
+              <div
+                className='items-center align-center flex justify-center h-1/5'
+                style={{
+                  height: '8em',
                 }}
               >
-                Log In
-              </button>
-            </form>
+                <UploadOutlined style={{ fontSize: '6em', opacity: '0.6' }} />
+              </div>
+              <div
+                className='flex justify-center align-center mb-3'
+                style={{ opacity: '0.6' }}
+              >
+                Upload File
+              </div>
+              {/* <div>
+                     <Button
+                       className='flex border-2 border rounded-lg h-10 w-full text-center items-center justify-center button-primary'
+                     >
+                       <span className='font-semibold text-sm uppercase leading-none'>
+                        Choose to Upload
+                       </span>
+                     </Button>
+                   </div> */}
+            </div>
+          </Dragger>}
+         
+
+          <div className='flex gap-4 h-full'>
+            {showImage1 && <img src="/images/image2.jpeg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
+            {showImage2 && <img src="/images/image1.jpeg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
+            {showImage3 && <iframe className='w-full h-full' src="/images/mcmc invoice.pdf" title="PDF Preview"></iframe>}
+
           </div>
-        )}
+
+        </div>
       </div>
     </Layout>
   );
