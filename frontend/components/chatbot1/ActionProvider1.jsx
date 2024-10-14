@@ -16,13 +16,9 @@ class ActionProvider1 {
     this.createCustomMessage = createCustomMessage;
   }
 
-  handleQuestion() {
+  handleQuestionx() {
     const messages = [
-      'Analysing...',
-      `Age: 43 & Disabled (Verified)`,
-      ` There is a donation available for your case.`,
-    `Please submit your current salary slip as required. If valid, the funds will then be released to the hospital according to the donation contract.`,
-
+      'Nice! I have already created a template based on your invoice.'
     ];
   
     const delays = [500, 900, 1000, 1400];
@@ -32,19 +28,63 @@ class ActionProvider1 {
         this.updateChatbotState(this.createChatBotMessage(message));
       }, delays[index]);
     });
+  }
 
-    
+  handleQuestionxx() {
+    const messages = [
+      'Noted. Yes, I tracked, and casted into the database.'
+    ];
+  
+    const delays = [500, 900, 1000, 1400];
+  
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        this.updateChatbotState(this.createChatBotMessage(message));
+      }, delays[index]);
+    });
+  }
+
+  handleQuestionxxx() {
+    const messages = [
+      'Yes',
+      `Generating...`,
+      `Here you go. From history, your user seem to favor orange bottle the most, but the price compared to other color is quite high.`,
+      `Searching from the news and match with name…​ \nThe uncle roger in your invoice name. actually opened a new restaurant and buy in a lot of stuff. This is a temperory increment​`,
+      `Ok, so eliminating this outlier, your product likely have normal trend. However, you may notice your white color product tends to favor by user, about 20%. which you can consider adjust your threshold to refill it.​`,
+      `Please find the right-hand side column.​`,
+    ];
+  
+    const delays = [500, 900, 1000, 1400, 1900, 2400];
+  
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        this.updateChatbotState(this.createChatBotMessage(message));
+      }, delays[index]);
+    });
+  }
+
+  handleQuestion() {
+    const messages = [
+      'Analysing...',
+      `2 bottles`,
+    ];
+  
+    const delays = [500, 900, 1000, 1400];
+  
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        this.updateChatbotState(this.createChatBotMessage(message));
+      }, delays[index]);
+    });
   }
   
   
 
   handleQuestion2() {
     const messages = [
-      { text: 'Analysing...', options: {} },
-      { text: '\nAnalysis Completed!', options: {} },
-      { text: '\nYou are verified as B40. You are eligible!', options: { widget: "Complete" } },
-      { text: 'Processing...', options: {} },
-      { text: '\nThe donation details have been sent to all parties involved!', options: {} },
+      { text: 'Record has been updated', options: {} },
+      { text: '\n Generating invoice...', options: {} },
+      { text: '\n Here is the invoice', options: { widget: "Complete" } },
     ];
   
     const delays = [500, 700, 900, 1400, 4000]; 
@@ -63,7 +103,33 @@ class ActionProvider1 {
     .catch(err => console.error('Failed to send email:', err));
   }
   
+  handleQuestion3() {
+    const messages = [
+      'May you give me something about your stock info​'
+    ];
   
+    const delays = [500, 900, 1000, 1400];
+  
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        this.updateChatbotState(this.createChatBotMessage(message));
+      }, delays[index]);
+    });
+  }
+
+  handleQuestion4() {
+    const messages = [
+      'This is the report. You must refill blue bottles as possible. The current stock is only 2​',
+    ];
+  
+    const delays = [500, 900, 1000, 1400];
+  
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        this.updateChatbotState(this.createChatBotMessage(message));
+      }, delays[index]);
+    });
+  }
 
 
   handleEnd() {

@@ -7,13 +7,21 @@ class MessageParser1 {
   parse(message) {
     const lowercase = message.toLowerCase();
 
-    if (lowercase.includes("invoice") || lowercase.includes("hospital")) {
-      this.actionProvider.handleQuestion();
+    if (lowercase.includes("submit") ) {
+      this.actionProvider.handleQuestionx();
     } 
-    else if (lowercase.includes("salary slip")) {
+    else if (lowercase.includes("excel")) {
+      this.actionProvider.handleQuestionxx();
+    }else if (lowercase.includes("red")) {
+      this.actionProvider.handleQuestion();
+    }else if (lowercase.includes("favor")) {
+      this.actionProvider.handleQuestionxxx();
+    }else if (lowercase.includes("mcmc")) {
       this.actionProvider.handleQuestion2();
-    }else if (lowercase.includes("thanks") || lowercase.includes("thank you")|| lowercase.includes("proceed")) {
-      this.actionProvider.handleEnd();
+    }else if (lowercase.includes("stock")) {
+      this.actionProvider.handleQuestion3();
+    }else if (lowercase.includes("here")) {
+      this.actionProvider.handleQuestion4();
     }
   }
 }

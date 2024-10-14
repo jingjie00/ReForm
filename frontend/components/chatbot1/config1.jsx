@@ -4,7 +4,7 @@ const config1 = {
   botName: "HealthMe",
   initialMessages: [
     createChatBotMessage(
-      `Hi, how may I help you today? To perform claims, please upload your invoice.`),
+      `Hi, to get started. Give me some ideas for your company work. Can you submit any sample of invoice that you currently have?.`),
   ]
 }
 
