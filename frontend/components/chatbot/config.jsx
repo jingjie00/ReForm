@@ -2,7 +2,7 @@ import { createChatBotMessage } from "react-chatbot-kit";
 import PaymentButton from "./PaymentButton";
 
 const config = {
-  botName: "reForm",
+  botName: "reFORM",
   initialMessages: [
     createChatBotMessage(`Good morning, Jason!`),
     createChatBotMessage(`How much would you like to contribute as a donation?`),

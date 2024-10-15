@@ -28,7 +28,7 @@ const putWalletApi = () => {
           "sk_59bb96279047f2365169a00b7ced5e4d39f5ed5e7da417b3d5c1d849dd697318",
       },
       data: {
-        name: "reForm " + uniqueID,
+        name: "reFORM " + uniqueID,
         external_id: null,
       },
     })

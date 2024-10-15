@@ -52,7 +52,7 @@ function LoginPage({ data }) {
       <div className='flex flex-row h-5/6'>
         <div className='w-1/3 p-4'>
         <div className='w-full'>
-            <Button onClick={() => { setShowImage3(true);setShowImage4(false); }} className='w-full cursor-none bg-black text-white rounded-lg px-5 py-3 my-5'></Button>
+            <Button onClick={() => { setShowImage3(true);setShowImage4(false); }} className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3 my-5'></Button>
             
           </div>
           <Chatbot
@@ -64,7 +64,7 @@ function LoginPage({ data }) {
           {showSuccess && <div className="payment-success">Request Successful!</div>}
 
           <div className='w-full'>
-            <Button onClick={() => { setShowImage4(true);setShowImage3(false) }} className='w-full cursor-none bg-black text-white rounded-lg px-5 py-3 my-5'></Button>
+            <Button onClick={() => { setShowImage4(true);setShowImage3(false) }} className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3 my-5'></Button>
            
           </div>
         </div>
