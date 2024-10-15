@@ -66,10 +66,10 @@ class ActionProvider1 {
   handleQuestion() {
     const messages = [
       'Analysing...',
-      `2 bottles`,
+      `There are only total of 2 red bottles has been sold`,
     ];
   
-    const delays = [500, 900, 1000, 1400];
+    const delays = [500, 1200, 1000, 1400];
   
     messages.forEach((message, index) => {
       setTimeout(() => {
