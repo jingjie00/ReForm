@@ -20,6 +20,7 @@ function LoginPage({ data }) {
   const [showImage1, setShowImage1] = useState(false);
   const [showImage2, setShowImage2] = useState(false);
   const [showImage3, setShowImage3] = useState(false);
+  const [showImage4, setShowImage4] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
@@ -50,6 +51,10 @@ function LoginPage({ data }) {
     <Layout>
       <div className='flex flex-row h-5/6'>
         <div className='w-1/3 p-4'>
+        <div className='w-full'>
+            <Button onClick={() => { setShowImage3(true);setShowImage4(false); }} className='w-full cursor-none bg-black text-white rounded-lg px-5 py-3 my-5'></Button>
+            
+          </div>
           <Chatbot
             config={config1}
             messageParser={MessageParser1}
@@ -59,11 +64,12 @@ function LoginPage({ data }) {
           {showSuccess && <div className="payment-success">Request Successful!</div>}
 
           <div className='w-full'>
-            <Button onClick={() => { setShowImage3(true) }} className='w-full cursor-none bg-black text-white rounded-lg px-5 py-3 my-5'></Button>
+            <Button onClick={() => { setShowImage4(true);setShowImage3(false) }} className='w-full cursor-none bg-black text-white rounded-lg px-5 py-3 my-5'></Button>
+           
           </div>
         </div>
         <div className='w-2/3 p-4'>
-        {!showImage3 &&  <Dragger {...verifyUploadProps}>
+        {(!showImage3 && !showImage4) &&  <Dragger {...verifyUploadProps}>
             <div className='p-3 w-full border rounded-lg flex flex-col mt-2.5'>
               <div
                 className='items-center align-center flex justify-center h-1/5'
@@ -95,7 +101,8 @@ function LoginPage({ data }) {
           <div className='flex gap-4 h-full'>
             {showImage1 && <img src="/images/image2.jpeg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
             {showImage2 && <img src="/images/user_submit.jpg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
-            {showImage3 && <iframe className='w-full h-full' src="/images/report.pdf" title="PDF Preview"></iframe>}
+            {showImage3 && <iframe className='w-full h-full' src="/images/stock_report.pdf" title="Stock Report"></iframe>}
+            {showImage4 && <iframe className='w-full h-full' src="/images/trend_analysis.pdf" title="Trend Analysis"></iframe>}
 
           </div>
 
