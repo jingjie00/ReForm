@@ -39,8 +39,11 @@ const putWalletApi = () => {
 function RequestPage({ data }) {
   const router = useRouter();
   const dispatch = useDispatch();
+  const [showImage0, setShowImage0] = useState(false);
   const [showImage1, setShowImage1] = useState(false);
   const [showImage2, setShowImage2] = useState(false);
+  const [showImage3, setShowImage3] = useState(false);
+  const [showImage4, setShowImage4] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false)
 
   useEffect(() => {
@@ -54,15 +57,16 @@ function RequestPage({ data }) {
     multiple: true,
     // accept: 'image/jpg, .pdf',
     async onChange(e) {
-if(e.fileList.length >1){
-
-  await navigator.clipboard.writeText("I have uploaded my salary slip.");
-  setShowImage1(true)
-}
-else{
-  await navigator.clipboard.writeText("Here, I have uploaded the invoice.");
-  setShowImage2(true)
-}
+      if (e.fileList.length ==0 ) {
+        await navigator.clipboard.writeText('I submitted a past invoice sample.');
+        setShowImage0(true);
+      } else if (e.fileList.length == 1) {
+        await navigator.clipboard.writeText('Ok. I need a system to track all invoice I generated before. Here is the listing');
+        setShowImage1(true);
+      } else {
+        await navigator.clipboard.writeText('Here you go');
+        setShowImage2(true);
+      }
       
     },
     onDrop(e) {
@@ -87,7 +91,7 @@ else{
                </div>
         </div>
         <div className='w-2/3 p-4'>
-               <Dragger {...verifyUploadProps}>
+               {(!showImage3 && !showImage4) && <Dragger {...verifyUploadProps}>
                  <div className='p-3 w-full border rounded-lg flex flex-col mt-2.5'>
                    <div
                      className='items-center align-center flex justify-center h-1/5'
@@ -113,13 +117,14 @@ else{
                      </Button>
                    </div> */}
                  </div>
-               </Dragger>
+               </Dragger>}
 
                <div className='flex gap-4'>
-                {showImage1 &&  <img src="/images/image2.jpeg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)}/>}
-                {showImage2 &&  <img src="/images/user_submit.jpg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)}/>}
-
-               
+               {showImage0 && <img src="/images/user_submit.jpg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
+            {showImage1 && <img src="/images/invoice_summary.jpg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
+            {showImage2 && <img src="/images/stock_count.png" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
+            {showImage3 && <iframe className='w-full h-full' src="/images/stock_report.pdf" title="Stock Report"></iframe>}
+            {showImage4 && <iframe className='w-full h-full' src="/images/trend_analysis.pdf" title="Trend Analysis"></iframe>}
                </div>
 
     

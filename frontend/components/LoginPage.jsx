@@ -17,6 +17,7 @@ import axios from "axios";
 function LoginPage({ data }) {
   const router = useRouter();
   const dispatch = useDispatch();
+  const [showImage0, setShowImage0] = useState(false);
   const [showImage1, setShowImage1] = useState(false);
   const [showImage2, setShowImage2] = useState(false);
   const [showImage3, setShowImage3] = useState(false);
@@ -34,11 +35,14 @@ function LoginPage({ data }) {
     multiple: true,
     // accept: 'image/jpg, .pdf',
     async onChange(e) {
-      if (e.fileList.length > 1) {
-        await navigator.clipboard.writeText('I have uploaded my salary slip.');
+      if (e.fileList.length == 1 ) {
+        await navigator.clipboard.writeText('I submitted a past invoice sample.');
+        setShowImage0(true);
+      } else if (e.fileList.length == 2) {
+        await navigator.clipboard.writeText('Ok. I need a system to track all invoice I generated before. Here is the listing.');
         setShowImage1(true);
       } else {
-        await navigator.clipboard.writeText('Here, I have uploaded the invoice.');
+        await navigator.clipboard.writeText('Here you go');
         setShowImage2(true);
       }
     },
@@ -52,7 +56,7 @@ function LoginPage({ data }) {
       <div className='flex flex-row h-5/6'>
         <div className='w-1/3 p-4'>
         <div className='w-full'>
-            <Button onClick={() => { setShowImage3(true);setShowImage4(false); }} className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3 my-5'></Button>
+            <Button onClick={() => { setShowImage0(false);setShowImage1(false);setShowImage2(false); setShowImage3(true);setShowImage4(false); }} className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3 my-5'></Button>
             
           </div>
           <Chatbot
@@ -64,7 +68,7 @@ function LoginPage({ data }) {
           {showSuccess && <div className="payment-success">Request Successful!</div>}
 
           <div className='w-full'>
-            <Button onClick={() => { setShowImage4(true);setShowImage3(false) }} className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3 my-5'></Button>
+            <Button onClick={() => {setShowImage0(false);setShowImage1(false);setShowImage2(false); setShowImage4(true);setShowImage3(false) }} className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3 my-5'></Button>
            
           </div>
         </div>
@@ -98,9 +102,10 @@ function LoginPage({ data }) {
           </Dragger>}
          
 
-          <div className='flex gap-4 h-full'>
-            {showImage1 && <img src="/images/image2.jpeg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
-            {showImage2 && <img src="/images/user_submit.jpg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
+          <div className={`flex gap ${showImage3||showImage4 ? 'h-full' : 'h-1/2'}`}>
+            {showImage0 && <img src="/images/user_submit.jpg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
+            {showImage1 && <img src="/images/invoice_summary.jpg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
+            {showImage2 && <img src="/images/stock_count.png" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
             {showImage3 && <iframe className='w-full h-full' src="/images/stock_report.pdf" title="Stock Report"></iframe>}
             {showImage4 && <iframe className='w-full h-full' src="/images/trend_analysis.pdf" title="Trend Analysis"></iframe>}
 
