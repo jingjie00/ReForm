@@ -4,7 +4,7 @@ const config1 = {
   botName: "reFORM",
   initialMessages: [
     createChatBotMessage(
-      `Hi, to get started. Give me some ideas for your company work. Can you submit any sample of invoice that you currently have?.`),
+      `Hi, to get started, could you provide some ideas for your company’s work? Also, can you submit a sample invoice that you currently have?`),
   ]
 }
 

@@ -16,9 +16,9 @@ class ActionProvider1 {
     this.createCustomMessage = createCustomMessage;
   }
 
-  handleQuestionx() {
+  handleQuestion1() {
     const messages = [
-      'Nice! I have already created a template based on your invoice.'
+      'Nice! I have already created an invoice template for you.'
     ];
   
     const delays = [500, 900, 1000, 1400];
@@ -30,9 +30,9 @@ class ActionProvider1 {
     });
   }
 
-  handleQuestionxx() {
+  handleQuestion2() {
     const messages = [
-      'Noted. Yes, I tracked, and casted into the database.'
+      'Noted. Yes, I have tracked it and casted it to the database.'
     ];
   
     const delays = [500, 900, 1000, 1400];
@@ -44,26 +44,8 @@ class ActionProvider1 {
     });
   }
 
-  handleQuestionxxx() {
-    const messages = [
-      'Yes',
-      `Generating...`,
-      `Here you go. From history, your user seem to favor orange bottle the most, but the price compared to other color is quite high.`,
-      `Searching from the news and match with name…​ \nThe uncle roger in your invoice name. actually opened a new restaurant and buy in a lot of stuff. This is a temperory increment​`,
-      `Ok, so eliminating this outlier, your product likely have normal trend. However, you may notice your white color product tends to favor by user, about 20%. which you can consider adjust your threshold to refill it.​`,
-      `Please find the right-hand side column.​`,
-    ];
-  
-    const delays = [500, 900, 1000, 1400, 1900, 2400];
-  
-    messages.forEach((message, index) => {
-      setTimeout(() => {
-        this.updateChatbotState(this.createChatBotMessage(message));
-      }, delays[index]);
-    });
-  }
 
-  handleQuestion() {
+  handleQuestion3() {
     const messages = [
       'Analysing...',
       `There are only total of 2 red bottles has been sold`,
@@ -77,10 +59,9 @@ class ActionProvider1 {
       }, delays[index]);
     });
   }
-  
-  
 
-  handleQuestion2() {
+
+  handleQuestion4() {
     const messages = [
       { text: 'Record has been updated', options: {} },
       { text: '\n Generating invoice...', options: {} },
@@ -102,10 +83,11 @@ class ActionProvider1 {
     .then(() => console.log("Done"))
     .catch(err => console.error('Failed to send email:', err));
   }
-  
-  handleQuestion3() {
+
+
+  handleQuestion5() {
     const messages = [
-      'May you give me something about your stock info​'
+      'Could you provide me with information about your stock​?'
     ];
   
     const delays = [500, 900, 1000, 1400];
@@ -117,9 +99,9 @@ class ActionProvider1 {
     });
   }
 
-  handleQuestion4() {
+  handleQuestion6() {
     const messages = [
-      'This is the report. You must refill blue bottles as possible. The current stock is only 2​',
+      'This is the report: you need to refill blue bottles as soon as possible, as the current stock is only 2.​',
     ];
   
     const delays = [500, 900, 1000, 1400];
@@ -131,6 +113,25 @@ class ActionProvider1 {
     });
   }
 
+
+  handleQuestion7() {
+    const messages = [
+      'Yes',
+      `Generating...`,
+      `Here you go. From the history, your user seems to favor orange bottles the most, but the price compared to other colors is quite high.`,
+      `Searching through the news and matching with the name…\nThe Uncle Roger in your invoice actually opened a new restaurant and purchased a lot of supplies. This is a temporary increase.​`,
+      `Okay, by eliminating this outlier, your product likely has a normal trend. However, you may notice that your white-colored product tends to be favored by users, by about 20%. You may want to consider adjusting your threshold to refill it.​`,
+      `Please find the right-hand side column.​`,
+    ];
+  
+    const delays = [500, 900, 1000, 1400, 1900, 2400];
+  
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        this.updateChatbotState(this.createChatBotMessage(message));
+      }, delays[index]);
+    });
+  }
 
   handleEnd() {
     this.updateChatbotState(this.createChatBotMessage(
