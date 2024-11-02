@@ -24,5 +24,5 @@ Our project name is called reForm.
 A Revolution for All Your Forms
 
 ## Repository
-https://github.com/Zoriannn/ReForm
+https://github.com/jingjie00/ReForm
 
