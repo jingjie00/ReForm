@@ -43,7 +43,9 @@ class ActionProvider1 {
 
   handleQuestion2() {
     const messages = [
-      'Noted. Yes, I have tracked it and casted it to the database.'
+      'Noted. Yes, I have tracked it and casted it to the database.',
+      'You may edit it with Sheets or with SQL. ',
+      'In the case you need edit in future, you may ask me or refer to your user console.'
     ];
   
     const delays = [500, 900, 1000, 1400];
@@ -114,7 +116,7 @@ class ActionProvider1 {
     this.updateChatbotState(message);
 
     navigator.clipboard
-      .writeText("Here you go")
+      .writeText("Here is the stock summary")
   }
 
   handleQuestion6() {
