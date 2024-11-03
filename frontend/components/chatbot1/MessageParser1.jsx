@@ -42,12 +42,12 @@ class MessageParser1 {
      
      try {
       const res = await axios.post(
-        `https://api.sambanova.ai/v1/chat/completions`,
+        `https://proxy.cors.sh/https://api.sambanova.ai/v1/chat/completions`,
         {
           model: 'Meta-Llama-3.1-8B-Instruct',
           messages: [
-            { role: 'system', content: 'You are the chatbot for a website selling plastic containers, such as bottles. Respond in this context. You may integrate news and address user queries.' },
-            { role: 'user', content: 'How many bottles are there?' }
+            { role: 'system', content: 'You are the chatbot for a website selling plastic containers, such as bottles. Respond in this context. You may integrate news and address user queries.' + lowercase },
+            { role: 'user', content: lowercase }
           ],
           temperature: 0.1,
           top_p: 0.1
@@ -67,7 +67,7 @@ class MessageParser1 {
     
     } catch (err) {
       console.error('API call error:', err.message);
-      let result = 'Sorry, Please try again. Kindly check your internet connection or API configuration.';
+      let result = 'Sorry, Please try again. Kindly check your internet connection.';
       this.actionProvider.handleOther(result);
     }
 
