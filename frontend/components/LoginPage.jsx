@@ -110,12 +110,12 @@ function LoginPage({ data }) {
     <Layout>
       <div className='flex flex-row h-5/6'>
         <div className='w-1/3 p-4'>
-          <Button className='w-full bg-red-500 text-white rounded-lg px-5 py-3' onClick={() => {
-            dispatch(SettingActions.setShowDb(true));
-            dispatch(SettingActions.setUploadedFile(null));
+          <Button className='w-full bg-red-500 text-white cursor-none rounded-lg px-5 py-3' onClick={() => {
+            //dispatch(SettingActions.setShowDb(true));
+            //dispatch(SettingActions.setUploadedFile(null));
+            setShowImage4(true);
           }}>
           </Button>
-
           <Chatbot config={config1} messageParser={MessageParser1} actionProvider={ActionProvider1} />
 
           {showSuccess && <div className="payment-success">Request Successful!</div>}
