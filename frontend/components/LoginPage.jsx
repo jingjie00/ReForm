@@ -138,7 +138,7 @@ if(showImage4===true){
           await navigator.clipboard.writeText('I submitted a past invoice sample.');
           setShowImage0(true);
         }else{
-          await navigator.clipboard.writeText('Here you go');
+          await navigator.clipboard.writeText('Here is the stock summary');
           setShowImage2(true);
         }
       } else if (e.fileList.length == 2) {

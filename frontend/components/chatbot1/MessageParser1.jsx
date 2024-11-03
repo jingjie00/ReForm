@@ -18,8 +18,8 @@ class MessageParser1 {
     else if (lowercase.includes("I need a system to track all the invoices I generated before".toLowerCase())) {
       this.actionProvider.handleQuestion2();
     }
-    //Good, I want to know how many red color bottles I have sold.​
-    else if (lowercase.includes("yellow bottles".toLowerCase())) {
+    //Good, I want to know how many yellow bottles sold.
+    else if (lowercase.includes("I want to know how many yellow bottles sold.".toLowerCase())) {
       this.actionProvider.handleQuestion3();
     }
     //Okay, I want to create an invoice for MCMC for the purchase of 600 large bottles.​
@@ -27,7 +27,7 @@ class MessageParser1 {
       this.actionProvider.handleQuestion4();
     }
     //Could you generate a report that tells me what is in high demand and what needs to be restocked?​
-    else if (lowercase.includes("you generate a report that tells me what is in high demand".toLowerCase())) {
+    else if (lowercase.includes("Could you generate a report that tells me what is in high demand".toLowerCase())) {
       this.actionProvider.handleQuestion5();
     }
     //Here is the stock summary.
@@ -35,7 +35,7 @@ class MessageParser1 {
       this.actionProvider.handleQuestion6();
     }
     //Could you briefly tell me which products users prefer? I would like a report on that.
-    else if (lowercase.includes("products users prefer".toLowerCase())) {
+    else if (lowercase.includes("Could you briefly tell me which products users prefer".toLowerCase())) {
       this.actionProvider.handleQuestion7();
     }else{
      this.actionProvider.handleLoading();

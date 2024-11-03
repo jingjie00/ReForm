@@ -55,7 +55,7 @@ class ActionProvider1 {
     });
 
     navigator.clipboard
-      .writeText(" I want to know how many yellow bottles sold.")
+      .writeText("I want to know how many yellow bottles sold.")
   }
 
 
