@@ -25,9 +25,11 @@ function LoginPage({ data }) {
   const [showImage4, setShowImage4] = useState(false);
   const [showImage5, setShowImage5] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false)
-
+  const [iframeContent, setIframeContent] = useState(<div></div>)
   const uploadedFile = useSelector((state) => state.setting.uploadedfile);
 const showDb = useSelector((state) => state.setting.showDb);
+
+
   const [flag, setFlag] = useState(false);
 
   useEffect(() => {
@@ -35,6 +37,84 @@ const showDb = useSelector((state) => state.setting.showDb);
     Aos.init();
     // putWalletApi();
   }, []);
+
+  useEffect(()=>{
+if(showImage3===true){
+setIframeContent(<iframe className='w-full h-full' src="/images/mcmc invoice.pdf" title="MCMC invoice"></iframe>)
+}
+  }, [showImage3])
+
+  useEffect(()=>{
+if(showImage4===true){
+ setIframeContent(<iframe className='w-full h-full' src="/images/stock_report.pdf" title="Stock Report"></iframe>)
+}
+  }, [showImage4])
+
+  useEffect(()=>{
+    if(showImage5===true){
+  setIframeContent(<iframe className='w-full h-full' src="/images/trend_analysis.pdf" title="Trend Analysis"></iframe>)
+    }
+  }, [showImage5])
+
+  useEffect(()=>{
+    if(uploadedFile?.length>0){
+  setIframeContent(<div className="mt-4 w-full h-full overflow-x-scroll">
+    <table className="table-auto border-collapse border border-gray-300">
+      <thead>
+        <tr>
+          {uploadedFile[0].map((header, index) => (
+            <th key={index} className="border px-4 py-2 bg-gray-200">
+              {header}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {/* Limit to the first 10 rows */}
+        {uploadedFile.slice(1, 11).map((row, rowIndex) => (
+          <tr key={rowIndex}>
+            {row.map((cell, cellIndex) => (
+              <td key={cellIndex} className="border px-4 py-2">
+                {cell}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    {uploadedFile.length > 11 && (
+      <p className="text-sm text-gray-500 mt-2">
+        Showing first 10 rows of {uploadedFile.length - 1} total rows
+      </p>
+    )}
+  </div>)
+    }
+  }, [uploadedFile])
+
+  useEffect(()=>{
+    if(showDb===true){
+      setIframeContent( <div className="w-full h-full">
+        <iframe
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQY__Dj1DGHH-QSQm3ZfoggADyMkkgNEi9pMwpUm052p7IdcPFNCZ8kJW7iuX7wp4R8Ah08IlPuY2M1/pubhtml?widget=true&amp;headers=true"
+          className="w-full h-full rounded-lg mt-1 pointer-events-none" // pointer-events-none to disable clicks on iframe
+          title="Google Sheets"
+        ></iframe>
+        
+        <button
+            onClick={() => {
+              window.open(
+                'https://docs.google.com/spreadsheets/d/1RRRfXNgdPckR3siiBEoRBwFRp-QjtX3cCLmZjqRGthE/edit?usp=sharing',
+                '_blank'
+              );
+            }}
+            className="absolute bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow-lg"
+          >
+            Open in New Tab
+          </button>
+        </div>)
+     
+    }
+  }, [showDb])
 
   const verifyUploadProps = {
     name: 'attachments',
@@ -65,7 +145,11 @@ const showDb = useSelector((state) => state.setting.showDb);
         <div className='w-1/3 p-4'>
         <div className='w-full'>
        
-        <Button  className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3'></Button>
+        <Button  className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3' onClick={()=>{
+          dispatch(SettingActions.setShowDb(true));
+          dispatch(SettingActions.setUploadedFile(null));
+        }}></Button>
+        <Button className='bg-[#e5e7eb]'></Button>
           
           </div>
           <Chatbot
@@ -77,18 +161,17 @@ const showDb = useSelector((state) => state.setting.showDb);
           {showSuccess && <div className="payment-success">Request Successful!</div>}
 
           <div className='w-full'>
-          <Button className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3'></Button>
+          <Button className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3' onClick={()=>{
+            dispatch(SettingActions.setShowDb(false));
+            setShowImage3(true);
+            
+          }}></Button>
          
           </div>
         </div>
         <div className='w-2/3 p-4'>
-         
-
           <div className={`flex gap ${showImage3||showImage4||showImage5  ? 'h-full' : 'h-full'}`}>
-          {showImage0 && <img src="/images/user_submit.jpg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
-            {showImage1 && <img src="/images/invoice_summary.jpg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
-            {showImage2 && <img src="/images/stock_count.png" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
-            {showImage3 && <iframe className='w-full h-full' src="/images/mcmc invoice.pdf" title="MCMC invoice"></iframe>}
+            {/* {showImage3 && <iframe className='w-full h-full' src="/images/mcmc invoice.pdf" title="MCMC invoice"></iframe>}
             {showImage4 && <iframe className='w-full h-full' src="/images/stock_report.pdf" title="Stock Report"></iframe>}
             {showImage5 && <iframe className='w-full h-full' src="/images/trend_analysis.pdf" title="Trend Analysis"></iframe>}
          
@@ -105,7 +188,7 @@ const showDb = useSelector((state) => state.setting.showDb);
                   </tr>
                 </thead>
                 <tbody>
-                  {/* Limit to the first 10 rows */}
+     
                   {uploadedFile.slice(1, 11).map((row, rowIndex) => (
                     <tr key={rowIndex}>
                       {row.map((cell, cellIndex) => (
@@ -126,9 +209,27 @@ const showDb = useSelector((state) => state.setting.showDb);
           )}
 
           {
-showDb && <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQY__Dj1DGHH-QSQm3ZfoggADyMkkgNEi9pMwpUm052p7IdcPFNCZ8kJW7iuX7wp4R8Ah08IlPuY2M1/pubhtml?widget=true&amp;headers=false"></iframe>
-          }
+showDb && <div className="w-full h-full">
+<iframe
+  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQY__Dj1DGHH-QSQm3ZfoggADyMkkgNEi9pMwpUm052p7IdcPFNCZ8kJW7iuX7wp4R8Ah08IlPuY2M1/pubhtml?widget=true&amp;headers=true"
+  className="w-full h-full rounded-lg mt-1 pointer-events-none" // pointer-events-none to disable clicks on iframe
+  title="Google Sheets"
+></iframe>
 
+<button
+    onClick={() => {
+      window.open(
+        'https://docs.google.com/spreadsheets/d/1RRRfXNgdPckR3siiBEoRBwFRp-QjtX3cCLmZjqRGthE/edit?usp=sharing',
+        '_blank'
+      );
+    }}
+    className="absolute bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow-lg"
+  >
+    Open in New Tab
+  </button>
+</div>
+          } */}
+          {iframeContent}
           </div>
 
         </div>

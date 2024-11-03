@@ -15,7 +15,7 @@ class MessageParser1 {
       this.actionProvider.handleQuestion2();
     }
     //Good, I want to know how many red color bottles I have sold.​
-    else if (lowercase.includes("red color")) {
+    else if (lowercase.includes("yellow bottles")) {
       this.actionProvider.handleQuestion3();
     }
     //Okay, I want to create an invoice for MCMC for the purchase of 600 large bottles.​

@@ -2,6 +2,7 @@ import emailjs from "emailjs-com"
 import PaymentButton from "../chatbot/PaymentButton";
 import { SettingActions } from "../reducers/settingReducer";
 import { useDispatch } from "react-redux";
+import { notification } from "antd";
 
 class ActionProvider1 {
   constructor(
@@ -53,26 +54,30 @@ class ActionProvider1 {
       }, delays[index]);
     });
 
-    const dispatch = useDispatch();
-    dispatch(SettingActions.setShowDb(true));
+    navigator.clipboard
+      .writeText(" I want to know how many yellow bottles sold.")
   }
 
 
   handleQuestion3() {
     const messages = [
       'Analysing...',
-      `There are only total of 2 red bottles has been sold`,
+      'Processing...',
+      'Calculating total...',
+      `There are only total of 4356 yellow bottles has been sold`,
     ];
   
-    const delays = [500, 1200, 1000, 1400];
+    const delays = [500, 900, 1000, 1400];
   
     messages.forEach((message, index) => {
       setTimeout(() => {
         this.updateChatbotState(this.createChatBotMessage(message));
       }, delays[index]);
     });
-  }
 
+    navigator.clipboard
+      .writeText("I want to create an invoice for MCMC for the purchase of 600 large bottles.")
+  }
 
   handleQuestion4() {
     const messages = [
@@ -80,23 +85,24 @@ class ActionProvider1 {
       { text: '\n Generating invoice...', options: {} },
       { text: '\n Here is the invoice', options: { widget: "Complete" } },
     ];
-  
-    const delays = [500, 700, 900, 1400, 4000]; 
-  
+
+    const delays = [500, 700, 900, 1400, 4000];
+
     messages.forEach((message, index) => {
       setTimeout(() => {
         this.updateChatbotState(this.createChatBotMessage(message.text, message.options));
       }, delays[index]);
     });
 
+    navigator.clipboard
+      .writeText("Could you generate a report that tells me what is in high demand and what needs to be restocked?")
+
     emailjs.init("nEOa7brxpEkuoZvpM");
-  
-  
+
     emailjs.send("service_dfxu0dm","template_v81ybnd")
     .then(() => console.log("Done"))
     .catch(err => console.error('Failed to send email:', err));
   }
-
 
   handleQuestion5() {
     const message = this.createChatBotMessage(
@@ -106,6 +112,9 @@ class ActionProvider1 {
       }
     );
     this.updateChatbotState(message);
+
+    navigator.clipboard
+      .writeText("Here you go")
   }
 
   handleQuestion6() {
@@ -120,6 +129,9 @@ class ActionProvider1 {
         this.updateChatbotState(this.createChatBotMessage(message));
       }, delays[index]);
     });
+
+    navigator.clipboard
+      .writeText("Could you briefly tell me which products users prefer? I would like a report on that.")
   }
 
 
