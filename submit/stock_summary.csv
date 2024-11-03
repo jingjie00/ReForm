@@ -1,0 +1,151 @@
+Stock No.,Product Name,SKU,Category,Quantity in Stock,Reorder Level,Reorder Quantity,Unit Cost,Total Cost,Selling Price,Total Revenue,Gross Margin,Supplier Name,Supplier Email,Supplier Phone,Warehouse Location,Batch Number,Stock Status,Barcode
+1,Mason Jar,4VMCMLG6,Jar,259,2,200,40,10360,49,12691,2331,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-4440,Active,934414537444
+2,Glass Storage Jar with Lid,ABD3DWXB,Jar,153,3,140,30,4590,39,5967,1377,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-7015,Inactive,308766018592
+3,Airtight Spice Jar,6XOCT75L,Jar,414,1,150,40,16560,49,20286,3726,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-3571,Inactive,944277949338
+4,Plastic Food Jar,832EATIR,Jar,285,2,150,10,2850,19,5415,2565,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-2484,Discontinued,971714044060
+5,Pickling Jar,WFP6IM7Z,Jar,138,3,110,40,5520,49,6762,1242,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-2159,Inactive,605957969055
+6,Ceramic Coffee Cup,SGVFAJUQ,Cup,349,1,200,40,13960,49,17101,3141,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-6229,Discontinued,835076983391
+7,Plastic Juice Cup,S2GE96VC,Cup,387,1,190,20,7740,29,11223,3483,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-4281,Active,174837674798
+8,Stainless Steel Travel Cup,PD9BKQT6,Cup,81,4,130,30,2430,39,3159,729,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-5443,Active,948156865510
+9,Double-Walled Tea Cup,7QH5O8JS,Cup,84,4,200,10,840,19,1596,756,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-9875,Inactive,793635673320
+10,Disposable Paper Cup,1180FOT0,Cup,297,2,180,30,8910,39,11583,2673,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-7861,Active,113514059226
+11,Ceramic Mug,F3J5APSG,Mug,288,2,200,50,14400,59,16992,2592,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-8803,Active,816355352236
+12,Insulated Travel Mug,88NWTV1Y,Mug,113,3,130,10,1130,19,2147,1017,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-5658,Inactive,506342465316
+13,Enamel Camping Mug,NT99UV9K,Mug,475,1,100,30,14250,39,18525,4275,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-8880,Discontinued,485188129052
+14,Glass Mug with Handle,CNYLRDAN,Mug,153,3,110,50,7650,59,9027,1377,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-8277,Active,957019007589
+15,Personalized Photo Mug,TXW4ONE3,Mug,202,2,130,30,6060,39,7878,1818,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-6241,Active,428365622487
+16,Glass Water Pitcher,18K9PPVQ,Pitcher,496,1,140,10,4960,19,9424,4464,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-7340,Discontinued,846690359289
+17,Plastic Juice Pitcher with Lid,9QVBEITV,Pitcher,260,2,140,10,2600,19,4940,2340,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-7706,Inactive,023002394065
+18,Insulated Pitcher,3GYOKUN4,Pitcher,400,1,200,10,4000,19,7600,3600,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-2932,Discontinued,752693432252
+19,Stainless Steel Milk Pitcher,4SKWNIH8,Pitcher,437,1,170,40,17480,49,21413,3933,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-4153,Discontinued,959464432547
+20,Ceramic Serving Pitcher,0FJWIBV0,Pitcher,483,1,170,40,19320,49,23667,4347,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-9131,Inactive,176945621645
+21,Glass Wine Carafe,6757GHXA,Carafe,182,3,110,20,3640,29,5278,1638,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-5583,Inactive,986097248069
+22,Thermal Coffee Carafe,YP2K5O7A,Carafe,272,2,170,30,8160,39,10608,2448,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-4310,Active,569867032157
+23,Plastic Water Carafe,7ZGP0IVB,Carafe,391,1,110,50,19550,59,23069,3519,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-3578,Inactive,756919827604
+24,Ceramic Tea Carafe,RLDT5SQA,Carafe,98,4,200,30,2940,39,3822,882,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-3803,Inactive,447244242177
+25,Insulated Stainless Steel Carafe,DKRW0GMY,Carafe,24,4,170,50,1200,59,1416,216,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-3421,Discontinued,987384911876
+26,Stemless Wine Glass,8X5ETNJV,Glass,435,1,100,50,21750,59,25665,3915,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-3268,Active,582022945794
+27,Highball Drinking Glass,061L5EEQ,Glass,63,4,130,40,2520,49,3087,567,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-2616,Discontinued,480388766975
+28,Shot Glass,S6YELEKU,Glass,248,2,120,40,9920,49,12152,2232,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-2655,Discontinued,670207898807
+29,Whiskey Glass,RB07C9XP,Glass,81,4,180,50,4050,59,4779,729,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-4477,Discontinued,743159891454
+30,Tumbler Glass,WCHEHQHO,Glass,285,2,190,30,8550,39,11115,2565,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-4355,Discontinued,284655755750
+31,Stainless Steel Hip Flask,F12ETM9X,Flask,447,1,190,30,13410,39,17433,4023,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-6281,Inactive,700827095417
+32,Insulated Beverage Flask,6CD4RDRQ,Flask,367,1,160,40,14680,49,17983,3303,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-2707,Active,049069759047
+33,Plastic Sports Flask,S94H0BPF,Flask,376,1,170,10,3760,19,7144,3384,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-6718,Active,807318787888
+34,Leather-Covered Flask,HE943EEN,Flask,286,2,200,40,11440,49,14014,2574,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-3483,Inactive,134468775733
+35,Collapsible Flask,10HOWNPE,Flask,126,3,160,10,1260,19,2394,1134,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-4473,Inactive,428759990766
+36,Vacuum-Insulated Thermos,02RNIZSR,Thermos,455,1,200,50,22750,59,26845,4095,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-6424,Discontinued,369083060827
+37,Glass Liner Thermos,CXM28HPH,Thermos,55,4,200,40,2200,49,2695,495,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-6342,Inactive,008480012905
+38,Food Jar Thermos,5KZ6GNUF,Thermos,188,3,200,40,7520,49,9212,1692,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-7709,Discontinued,826447319689
+39,Wide-Mouth Thermos,Y5HG26OI,Thermos,452,1,190,50,22600,59,26668,4068,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-5888,Discontinued,900305456379
+40,Leakproof Travel Thermos,R8G27FZQ,Thermos,404,1,140,20,8080,29,11716,3636,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-5860,Inactive,615230472662
+41,Plastic Food Storage Container,56LGRTHN,Container,164,3,120,20,3280,29,4756,1476,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-6164,Inactive,249913718760
+42,Glass Meal Prep Container,1CXXPN96,Container,195,3,120,40,7800,49,9555,1755,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-6853,Inactive,423846557918
+43,Stackable Pantry Container,3NP0GFXW,Container,166,3,130,30,4980,39,6474,1494,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-8668,Inactive,697199258226
+44,Silicone Storage Container,VDDL80ZL,Container,174,3,150,30,5220,39,6786,1566,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-8128,Inactive,540263819472
+45,Airtight Cereal Container,WZQBT13G,Container,211,2,180,40,8440,49,10339,1899,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-3374,Inactive,007508519536
+46,Bento Lunch Box,P7K7BAYZ,Lunch Box,178,3,140,10,1780,19,3382,1602,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-3336,Active,211472863310
+47,Stainless Steel Lunch Box,6U5W7F1S,Lunch Box,252,2,110,30,7560,39,9828,2268,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-6266,Active,516536045769
+48,Insulated Lunch Bag,J6X7V61C,Lunch Box,409,1,180,10,4090,19,7771,3681,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-8634,Inactive,330408546658
+49,Plastic Kids’ Lunch Box,RGOMZ94H,Lunch Box,336,1,120,10,3360,19,6384,3024,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-4659,Inactive,242558885244
+50,Microwave-Safe Lunch Box,3S4DZTU9,Lunch Box,262,2,140,40,10480,49,12838,2358,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-6300,Discontinued,514480241229
+51,Serving Tray with Handles,RYGPHG53,Tray,27,4,120,30,810,39,1053,243,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-8954,Active,848074460479
+52,Wooden Breakfast Tray,9EJ0V5Z7,Tray,86,4,200,50,4300,59,5074,774,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-7938,Inactive,722180213765
+53,Plastic Compartment Tray,1UBM9V6V,Tray,218,2,180,30,6540,39,8502,1962,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-5560,Inactive,444378084302
+54,Metal Oven Tray,VIWET8OX,Tray,490,1,190,30,14700,39,19110,4410,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-3175,Inactive,445549646740
+55,Stackable Storage Tray,CI1MS4IQ,Tray,356,1,200,30,10680,39,13884,3204,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-2537,Inactive,329807430388
+56,Ceramic Dinner Plate,THFROZPQ,Plate,341,1,200,20,6820,29,9889,3069,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-1339,Discontinued,545582340390
+57,Disposable Paper Plate,0TEU0415,Plate,78,4,140,50,3900,59,4602,702,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-3844,Inactive,582067109967
+58,Melamine Plate,KTNJ7YS6,Plate,146,3,100,20,2920,29,4234,1314,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-7520,Active,088968437245
+59,Glass Dessert Plate,J7HOWEV4,Plate,209,2,130,20,4180,29,6061,1881,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-6617,Inactive,895577741988
+60,Divided Kids’ Plate,ZQL8S26E,Plate,11,5,200,40,440,49,539,99,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-1970,Inactive,361265608138
+61,Silicone Stretch Lid,DVLB6JTU,Lid,187,3,200,10,1870,19,3553,1683,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-1434,Active,407235142692
+62,Plastic Snap-On Lid,NCCJSFXV,Lid,61,4,140,50,3050,59,3599,549,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-7200,Discontinued,877792069130
+63,Bamboo Jar Lid,2F4H64NC,Lid,263,2,110,10,2630,19,4997,2367,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-2444,Active,118358955786
+64,Stainless Steel Pot Lid,ZIU5PM84,Lid,23,4,160,20,460,29,667,207,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-1985,Active,340447663479
+65,Glass Container Lid,A2DBMAEU,Lid,38,4,200,10,380,19,722,342,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-4107,Active,779251799189
+66,Stainless Steel Spoon,IHUFL0W5,Cutlery,156,3,180,10,1560,19,2964,1404,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-3753,Inactive,430467271288
+67,Reusable Metal Fork,XHQKRCTH,Cutlery,314,1,190,10,3140,19,5966,2826,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-7645,Active,384392227448
+68,Plastic Knife Set,SJ0Z1GFA,Cutlery,360,1,170,50,18000,59,21240,3240,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-1842,Active,809563044511
+69,Bamboo Chopsticks,Z8FZ7ZGX,Cutlery,186,3,100,40,7440,49,9114,1674,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-5326,Inactive,668446438688
+70,Cutlery Set in Case,KCFDFM8O,Cutlery,369,1,200,10,3690,19,7011,3321,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-3639,Discontinued,268913446361
+71,Slotted Spatula,KAB8K28R,Kithchen Tools,258,2,180,40,10320,49,12642,2322,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-9684,Inactive,453230436355
+72,Pasta Spoon,SCMENAWE,Kithchen Tools,475,1,110,20,9500,29,13775,4275,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-9928,Discontinued,394942710452
+73,Wooden Cooking Spoon,R6X5A2K3,Kithchen Tools,278,2,150,40,11120,49,13622,2502,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-1778,Discontinued,926200934336
+74,Soup Ladle,MB1OYFHL,Kithchen Tools,134,3,180,40,5360,49,6566,1206,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-7109,Discontinued,236934389071
+75,Potato Masher,SVUVHUVX,Kithchen Tools,198,3,190,20,3960,29,5742,1782,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-5466,Active,797189443641
+76,Stainless Steel Mixing Bowl,H0SYNXKT,Bowl,44,4,140,40,1760,49,2156,396,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-7553,Active,459994564263
+77,Plastic Nesting Bowl Set,HK8I2X2C,Bowl,296,2,140,10,2960,19,5624,2664,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-1575,Discontinued,563599479351
+78,Glass Mixing Bowl with Lid,06ONLZTP,Bowl,257,2,200,20,5140,29,7453,2313,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-9998,Discontinued,401065232106
+79,Ceramic Batter Bowl,GDJHRY93,Bowl,89,4,140,30,2670,39,3471,801,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-3138,Inactive,867680033967
+80,Silicone Mixing Bowl,XD8K8C63,Bowl,125,3,110,20,2500,29,3625,1125,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-8300,Inactive,471785638215
+81,Box Grater,UQPM8ULJ,Grater,263,2,160,40,10520,49,12887,2367,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-7860,Active,085019072712
+82,Handheld Zester Grater,V3SNI4OH,Grater,496,1,110,10,4960,19,9424,4464,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-7718,Discontinued,643221701792
+83,Rotary Cheese Grater,TMPNGHFG,Grater,366,1,110,20,7320,29,10614,3294,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-2869,Active,112031874828
+84,Microplane Grater,CV3IR85P,Grater,56,4,130,40,2240,49,2744,504,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-4314,Discontinued,370273290960
+85,Stainless Steel Vegetable Grater,948YEHZ1,Grater,397,1,160,10,3970,19,7543,3573,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-1240,Discontinued,107666073988
+86,Bamboo Chopping Board,NB9R4VWO,Chopping Board,326,1,100,50,16300,59,19234,2934,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-2180,Active,170519401811
+87,Plastic Cutting Board Set,BFGNL63M,Chopping Board,346,1,140,10,3460,19,6574,3114,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-8794,Discontinued,227830976515
+88,Glass Cutting Board,VULQ4YTE,Chopping Board,202,2,110,40,8080,49,9898,1818,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-7976,Active,801100039708
+89,Anti-Bacterial Wood Chopping Board,QWTY2BHC,Chopping Board,106,3,160,30,3180,39,4134,954,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-3089,Discontinued,219351827431
+90,Marble Cheese Board,HD4KOE4W,Chopping Board,62,4,110,10,620,19,1178,558,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-4313,Discontinued,883259559696
+91,Ceramic Serving Platter,41WY9FAC,Serving Dishes,71,4,120,30,2130,39,2769,639,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-7700,Active,286186576477
+92,Wooden Charcuterie Board,IB43EHYP,Serving Dishes,234,2,190,30,7020,39,9126,2106,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-6155,Inactive,665878282024
+93,Glass Salad Bowl,XZ8MWVP3,Serving Dishes,236,2,160,50,11800,59,13924,2124,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-9323,Discontinued,149978257490
+94,Metal Tiered Serving Stand,2ZQUAAZ7,Serving Dishes,146,3,160,50,7300,59,8614,1314,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-6332,Discontinued,513435365627
+95,Plastic Chip and Dip Tray,QBWO1FN8,Serving Dishes,332,1,120,20,6640,29,9628,2988,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-5328,Discontinued,237172586877
+96,Mini Food Processor,E26SXA73,Food Processors,69,4,100,10,690,19,1311,621,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-8989,Discontinued,233302460580
+97,Blender with Food Processor Attachment,T78VGFBJ,Food Processors,347,1,170,10,3470,19,6593,3123,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-7754,Discontinued,907036746702
+98,Electric Vegetable Chopper,NAWSKLAF,Food Processors,448,1,110,20,8960,29,12992,4032,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-6241,Inactive,312591269852
+99,Manual Food Processor,NIK3LT5X,Food Processors,430,1,190,30,12900,39,16770,3870,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-1699,Active,339241432265
+100,Dough Maker Food Processor,IC03M7SS,Food Processors,101,3,140,30,3030,39,3939,909,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-2041,Inactive,395983712147
+101,Ceramic Flour Canister,I7KWP3G2,Canister,14,5,170,40,560,49,686,126,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-1532,Inactive,038331783193
+102,Stainless Steel Coffee Canister,MPGNURO1,Canister,455,1,110,30,13650,39,17745,4095,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-6819,Discontinued,594452196936
+103,Glass Sugar Canister with Lid,G7JHU0IY,Canister,399,1,200,20,7980,29,11571,3591,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-5726,Inactive,388927709491
+104,Stackable Pantry Canister,VCU6IZ35,Canister,484,1,100,40,19360,49,23716,4356,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-9459,Inactive,188334923638
+105,Airtight Metal Canister,B1J0E9SZ,Canister,260,2,150,30,7800,39,10140,2340,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-2589,Discontinued,191616267432
+106,Fine Mesh Strainer,K2F0HE7O,Strainer,405,1,150,50,20250,59,23895,3645,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-7822,Active,048590124131
+107,Colander Strainer Bowl,V8N8OKLV,Strainer,141,3,110,50,7050,59,8319,1269,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-2707,Discontinued,094282501541
+108,Tea Strainer,M9RJDTT8,Strainer,204,2,170,50,10200,59,12036,1836,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-6339,Active,574053219175
+109,Oil Strainer,JYTDPCTJ,Strainer,159,3,190,50,7950,59,9381,1431,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-9537,Active,045981886928
+110,Pasta Draining Basket,RLSHJNCV,Strainer,236,2,180,50,11800,59,13924,2124,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-6210,Inactive,887574161375
+111,Glass Ice Tea Pitcher,ADJT6Z5M,Pitcher,221,2,130,30,6630,39,8619,1989,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-6950,Inactive,253292681105
+112,Acrylic Lemonade Pitcher,FYIQUA8F,Pitcher,240,2,120,50,12000,59,14160,2160,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-5763,Discontinued,449971109593
+113,Insulated Water Pitcher,ZEVM12FF,Pitcher,149,3,140,20,2980,29,4321,1341,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-2334,Active,541309124979
+114,Stainless Steel Beer Pitcher,LUEGM67E,Pitcher,243,2,180,20,4860,29,7047,2187,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-5325,Inactive,231227598761
+115,Juice Pitcher with Strainer,MER3ZRE1,Pitcher,401,1,180,30,12030,39,15639,3609,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-7694,Active,433733494358
+116,Electric Kettle,8YPRT0U4,Kettle,326,1,200,30,9780,39,12714,2934,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-5326,Active,433192520697
+117,Stovetop Whistling Kettle,GO0JLQ1R,Kettle,225,2,160,30,6750,39,8775,2025,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-1821,Active,483383092686
+118,Glass Tea Kettle,ZYDW0UJ6,Kettle,396,1,110,10,3960,19,7524,3564,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-2730,Active,964332185033
+119,Copper Pour-Over Kettle,QKEV0M8L,Kettle,412,1,140,20,8240,29,11948,3708,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-5499,Active,558160888435
+120,Foldable Travel Kettle,OM1IFF4F,Kettle,340,1,170,30,10200,39,13260,3060,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-3046,Active,768890404043
+121,Stainless Steel Saucepan,7WT8ZPAO,Pot,157,3,170,10,1570,19,2983,1413,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-8883,Inactive,882905828678
+122,Cast Iron Dutch Oven,6U5VMSPD,Pot,113,3,200,10,1130,19,2147,1017,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-2930,Inactive,522627872906
+123,Non-Stick Frying Pan,6DC9AGSB,Pot,470,1,190,40,18800,49,23030,4230,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-3150,Active,029437287532
+124,Copper Stockpot,DM145RN3,Pot,163,3,110,30,4890,39,6357,1467,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-9280,Inactive,960388108281
+125,Aluminum Soup Pot,1VOHFWR1,Pot,237,2,170,40,9480,49,11613,2133,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-1723,Active,281652638467
+126,Non-Stick Skillet,A14MWV7F,Pan,285,2,200,30,8550,39,11115,2565,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-7060,Active,982051518185
+127,Cast Iron Grill Pan,CZHXEAHS,Pan,432,1,170,10,4320,19,8208,3888,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-7863,Active,259256750215
+128,Carbon Steel Frying Pan,6WHUJN8I,Pan,107,3,170,50,5350,59,6313,963,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-5049,Discontinued,008144808418
+129,Ceramic Sauté Pan,63ZDFAEW,Pan,350,1,170,10,3500,19,6650,3150,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-7719,Discontinued,826424446512
+130,Hard-Anodized Roasting Pan,IMB1ON5B,Pan,173,3,110,10,1730,19,3287,1557,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-8868,Discontinued,610682963715
+131,Stainless Steel Measuring Cup,C5BATN7K,Cup,480,1,110,10,4800,19,9120,4320,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-4866,Inactive,156355597326
+132,Plastic Measuring Cup with Handle,ULH4F1VY,Cup,439,1,180,10,4390,19,8341,3951,Delta Products LLC,delta.products@gmail.com,017-69697221,Puchong,BATCH-3990,Active,531468516388
+133,Collapsible Silicone Measuring Cup,6I9FZ9H2,Cup,359,1,150,40,14360,49,17591,3231,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-7738,Inactive,338950412417
+134,Glass Liquid Measuring Cup,RUKBUSVD,Cup,66,4,200,10,660,19,1254,594,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-4046,Active,315906788034
+135,Stackable Measuring Cup Set,XJFDJLID,Cup,81,4,150,20,1620,29,2349,729,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-4907,Active,468152418999
+136,Plastic Storage Bin with Lid,53JY2DFJ,Storage Bin,102,3,120,40,4080,49,4998,918,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-8124,Inactive,756443172526
+137,Stackable Pantry Bin,Z01B8UQ4,Storage Bin,265,2,180,30,7950,39,10335,2385,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-3824,Discontinued,437344802096
+138,Wire Storage Basket,HWPQ2HUE,Storage Bin,315,1,110,30,9450,39,12285,2835,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-6035,Active,556063418053
+139,Acrylic Cosmetic Bin,Z7VNTD29,Storage Bin,368,1,160,30,11040,39,14352,3312,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-6355,Discontinued,292072345275
+140,Fabric Storage Box,RANFCS48,Storage Bin,106,3,140,10,1060,19,2014,954,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-2115,Discontinued,120549786669
+141,Stainless Steel Insulated Travel Mug,0G1PSQLH,Mug,92,4,190,10,920,19,1748,828,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-2505,Discontinued,465653782767
+142,Ceramic Travel Mug with Lid,ALUZOJ2Y,Mug,355,1,110,40,14200,49,17395,3195,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-4598,Discontinued,188509720322
+143,Collapsible Travel Mug,NNSDW8XX,Mug,356,1,150,50,17800,59,21004,3204,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-6771,Active,437178991220
+144,Plastic Tumbler with Straw,KSE62RTG,Mug,75,4,100,50,3750,59,4425,675,Epsilon Global Trade,epsilon.global@gmail.com,016-59812778,Subang,BATCH-4681,Active,791594071503
+145,Silicone Grip Travel Mug,Z7JCBM8B,Mug,20,5,190,50,1000,59,1180,180,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-5062,Inactive,746737025820
+146,Silicone Food Storage Bag,QSCGHX0S,Reusable Bag,309,1,200,20,6180,29,8961,2781,Theta Partners Sdn Bhd,theta.partners@gmail.com,016-97884054,Banting,BATCH-6114,Discontinued,997619490294
+147,Reusable Canvas Grocery Bag,0PRSTURK,Reusable Bag,349,1,150,30,10470,39,13611,3141,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-7997,Discontinued,588017903626
+148,Mesh Produce Bag,VZ6JJUTE,Reusable Bag,270,2,120,10,2700,19,5130,2430,Alpha Supplies Co.,alpha.supplies@gmail.com,012-38277289,Klang,BATCH-4144,Discontinued,226783421551
+149,Foldable Snack Bag,SHJO3CMF,Reusable Bag,93,4,120,10,930,19,1767,837,Gamma Wholesalers Inc.,gamma.wholesalers@gmail.com,016-1468899,Serdang,BATCH-5797,Inactive,557916855517
+150,Leakproof Freezer Bag,E6V7G6W5,Reusable Bag,125,3,190,10,1250,19,2375,1125,Beta Distributors Ltd.,beta.distributors@gmail.com,016-9605513,Rawang,BATCH-8037,Inactive,862965718978
