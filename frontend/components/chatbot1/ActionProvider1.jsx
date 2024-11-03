@@ -154,6 +154,27 @@ class ActionProvider1 {
       messages: [...prevState.messages, message],
     }));
   }
+
+  handleLoading() {
+    this.updateChatbotState(this.createChatBotMessage("Processing..."));
+  }
+
+  handleOther(messages) {
+
+    if (messages === "Sorry, Please try again. Kindly check your internet connection") {
+      this.updateChatbotState(this.createChatBotMessage(messages));
+      return;
+    }
+
+    // split messages on \n 
+    const messagesArr = messages.split('\n');
+  
+    messagessArr.forEach((message, index) => {
+      setTimeout(() => {
+        this.updateChatbotState(this.createChatBotMessage(message));
+      }, 100);
+    });
+  }
 }
 
 export default ActionProvider1;

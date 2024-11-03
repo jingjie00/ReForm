@@ -37,3 +37,15 @@ export const initializeLocalStorageWithDefaultRecords = (initialRecords = []) =>
     saveRecordsToLocalStorage(initialRecords);
   }
 };
+
+export const callApi = async () => {
+  try {
+    // const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+    results = "This product is not available. hello \n try again";
+    return results
+  } catch (err) {
+   // setError(err.message);
+   console.log(err.message);
+    return "Sorry, Please try again. Kindly check your internet connection";
+  }
+};
