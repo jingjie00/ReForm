@@ -83,6 +83,45 @@ function LoginPage({ data }) {
     }
   }, [uploadedFile]);
 
+useEffect(()=>{
+if(showDb===true){
+  setIframeContent( <div className="w-full h-full">
+    <iframe
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQY__Dj1DGHH-QSQm3ZfoggADyMkkgNEi9pMwpUm052p7IdcPFNCZ8kJW7iuX7wp4R8Ah08IlPuY2M1/pubhtml?widget=true&amp;headers=true"
+      className="w-full h-full rounded-lg mt-1 pointer-events-none" // pointer-events-none to disable clicks on iframe
+      title="Google Sheets"
+    ></iframe>
+    
+    <div className="flex flex-row justify-between">
+    <button
+        onClick={() => {
+          window.open(
+            'https://docs.google.com/spreadsheets/d/1RRRfXNgdPckR3siiBEoRBwFRp-QjtX3cCLmZjqRGthE/edit?usp=sharing',
+            '_blank'
+          );
+        }}
+        className="absolute bottom-4 right-30 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow-lg"
+      >
+        Edit in Sheets
+      </button>
+      <button
+        onClick={() => {
+          window.open(
+            'https://docs.google.com/spreadsheets/d/1RRRfXNgdPckR3siiBEoRBwFRp-QjtX3cCLmZjqRGthE/edit?usp=sharing',
+            '_blank'
+          );
+        }}
+        className="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded shadow-lg"
+      >
+        Edit in SQL
+      </button>
+    </div>
+    
+    </div>)
+ 
+}
+}, [showDb])
+
   const verifyUploadProps = {
     name: 'attachments',
     multiple: true,
@@ -111,9 +150,9 @@ function LoginPage({ data }) {
       <div className='flex flex-row h-5/6'>
         <div className='w-1/3 p-4'>
           <Button className='w-full bg-red-500 text-white cursor-none rounded-lg px-5 py-3' onClick={() => {
-            //dispatch(SettingActions.setShowDb(true));
-            //dispatch(SettingActions.setUploadedFile(null));
-            
+            dispatch(SettingActions.setShowDb(true));
+            dispatch(SettingActions.setUploadedFile(null));
+           // setShowDb(true);
           }}>
           </Button>
           <Chatbot config={config1} messageParser={MessageParser1} actionProvider={ActionProvider1} />
