@@ -14,6 +14,7 @@ export const settingSlice = createSlice({
     fromForum: '',
     username: '',
     records: loadRecordsFromLocalStorage(), 
+    uploadedfile: null,
   },
   reducers: {
     setLoading: (state, action) => ({
@@ -61,6 +62,10 @@ export const settingSlice = createSlice({
       state.records = state.records.filter((record) => record.id !== action.payload);
       saveRecordsToLocalStorage(state.records); // Sync with localStorage
     },
+    setUploadedFile: (state, action) => ({
+      ...state,
+      uploadedfile: action.payload,
+    }),
 
   },
 });

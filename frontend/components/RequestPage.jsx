@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, message } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,6 +17,36 @@ function CrudPage() {
   const [markdown, setMarkdown] = useState('');
   const [title, setTitle] = useState('');
 
+  // Function to load records from localStorage and update Redux state
+  const loadRecordsFromLocalStorage = () => {
+    const storedRecords = JSON.parse(localStorage.getItem('records')) || [];
+    dispatch(SettingActions.setInitialRecords(storedRecords));
+  };
+
+  useEffect(() => {
+    // Initial load from localStorage
+    loadRecordsFromLocalStorage();
+
+    // Listener to load records when tab becomes visible
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        loadRecordsFromLocalStorage();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [dispatch]);
+
+  const updateLocalStorageAndState = (updatedRecords) => {
+    localStorage.setItem('records', JSON.stringify(updatedRecords)); // Update localStorage
+    dispatch(SettingActions.setInitialRecords(updatedRecords)); // Update Redux state
+  };
+
   const handleAddRecord = () => {
     if (!newRecordTitle.trim() || !newRecordLatex.trim()) {
       return message.error('Both title and LaTeX content are required!');
@@ -28,7 +58,8 @@ function CrudPage() {
       latex: newRecordLatex,
     };
 
-    dispatch(SettingActions.addRecord(newRecord));
+    const updatedRecords = [...records, newRecord];
+    updateLocalStorageAndState(updatedRecords);
 
     setNewRecordTitle('');
     setNewRecordLatex('');
@@ -40,13 +71,20 @@ function CrudPage() {
     if (!title.trim() || !markdown.trim()) {
       return message.error('Both title and LaTeX content are required!');
     }
-    dispatch(SettingActions.updateRecord({ id: selectedRecord.id, name: title, latex: markdown }));
+
+    const updatedRecords = records.map((record) =>
+      record.id === selectedRecord.id ? { ...record, name: title, latex: markdown } : record
+    );
+    updateLocalStorageAndState(updatedRecords);
+
     message.success('Record updated successfully');
     setIsEditModalOpen(false);
   };
 
   const handleDeleteRecord = (id) => {
-    dispatch(SettingActions.deleteRecord(id));
+    const updatedRecords = records.filter((record) => record.id !== id);
+    updateLocalStorageAndState(updatedRecords);
+
     message.success('Record deleted');
   };
 
@@ -75,7 +113,6 @@ function CrudPage() {
   return (
     <Layout>
       <div className="my-10 mx-auto max-w-3xl">
-        {/* Rounded box for "Edit Your Templates" section */}
         <div className="border rounded-lg shadow-lg p-6 mb-5 bg-gray-50">
           <div className="flex justify-between items-center mb-5">
             <h2 className="text-2xl font-bold text-gray-800">Edit Your Templates</h2>
@@ -87,14 +124,14 @@ function CrudPage() {
             {records.map((record) => (
               <div
                 key={record.id}
-                className="flex justify-between items-center p-4 hover:bg-blue-500 hover:text-white transition duration-200 cursor-pointer rounded-lg"
+                className="flex justify-between items-center p-2 hover:bg-blue-500 hover:text-white transition duration-200 cursor-pointer rounded-lg"
                 onClick={() => openEditModal(record)}
               >
-                <span className="text-lg font-medium">{record.name}</span>
-                <div className="space-x-4"> {/* Increased space between buttons */}
-                  <Button icon={<EditOutlined />} onClick={(e) => e.stopPropagation()} />
+                <span className="text-sm font-medium">{record.name}</span>
+                <div className="space-x-4">
+                  <Button icon={<EditOutlined style={{ fontSize: '20px' }} />} onClick={(e) => e.stopPropagation()} />
                   <Button
-                    icon={<DeleteOutlined />}
+                    icon={<DeleteOutlined style={{ fontSize: '20px' }} />}
                     onClick={(e) => {
                       e.stopPropagation();
                       handleDeleteRecord(record.id);

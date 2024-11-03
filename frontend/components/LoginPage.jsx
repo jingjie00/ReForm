@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Aos from 'aos';
 import Layout from './general/Layout';
 import { SettingActions } from './reducers/settingReducer';
@@ -13,6 +13,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import { Button, Form } from 'antd';
 import { useFetcher } from 'react-router-dom';
 import axios from "axios";
+import useSelection from 'antd/lib/table/hooks/useSelection';
 
 function LoginPage({ data }) {
   const router = useRouter();
@@ -24,6 +25,8 @@ function LoginPage({ data }) {
   const [showImage4, setShowImage4] = useState(false);
   const [showImage5, setShowImage5] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false)
+
+  const uploadedFile = useSelector((state) => state.setting.uploadedfile);
 
   const [flag, setFlag] = useState(false);
 
@@ -80,42 +83,49 @@ function LoginPage({ data }) {
           </div>
         </div>
         <div className='w-2/3 p-4'>
-        {(!showImage3 && !showImage4 && !showImage5) &&  <Dragger {...verifyUploadProps}>
-            <div className='p-3 w-full border rounded-lg flex flex-col mt-2.5'>
-              <div
-                className='items-center align-center flex justify-center h-1/5'
-                style={{
-                  height: '8em',
-                }}
-              >
-                <UploadOutlined style={{ fontSize: '6em', opacity: '0.6' }} />
-              </div>
-              <div
-                className='flex justify-center align-center mb-3'
-                style={{ opacity: '0.6' }}
-              >
-                Upload File
-              </div>
-              {/* <div>
-                     <Button
-                       className='flex border-2 border rounded-lg h-10 w-full text-center items-center justify-center button-primary'
-                     >
-                       <span className='font-semibold text-sm uppercase leading-none'>
-                        Choose to Upload
-                       </span>
-                     </Button>
-                   </div> */}
-            </div>
-          </Dragger>}
          
 
-          <div className={`flex gap ${showImage3||showImage4||showImage5  ? 'h-full' : 'h-1/2'}`}>
+          <div className={`flex gap ${showImage3||showImage4||showImage5  ? 'h-full' : 'h-full'}`}>
           {showImage0 && <img src="/images/user_submit.jpg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
             {showImage1 && <img src="/images/invoice_summary.jpg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
             {showImage2 && <img src="/images/stock_count.png" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
             {showImage3 && <iframe className='w-full h-full' src="/images/mcmc invoice.pdf" title="MCMC invoice"></iframe>}
             {showImage4 && <iframe className='w-full h-full' src="/images/stock_report.pdf" title="Stock Report"></iframe>}
             {showImage5 && <iframe className='w-full h-full' src="/images/trend_analysis.pdf" title="Trend Analysis"></iframe>}
+         
+            {uploadedFile && (
+            <div className="mt-4 w-full h-full overflow-x-scroll">
+              <table className="table-auto border-collapse border border-gray-300">
+                <thead>
+                  <tr>
+                    {uploadedFile[0].map((header, index) => (
+                      <th key={index} className="border px-4 py-2 bg-gray-200">
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* Limit to the first 10 rows */}
+                  {uploadedFile.slice(1, 11).map((row, rowIndex) => (
+                    <tr key={rowIndex}>
+                      {row.map((cell, cellIndex) => (
+                        <td key={cellIndex} className="border px-4 py-2">
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {uploadedFile.length > 11 && (
+                <p className="text-sm text-gray-500 mt-2">
+                  Showing first 10 rows of {uploadedFile.length - 1} total rows
+                </p>
+              )}
+            </div>
+          )}
+
           </div>
 
         </div>

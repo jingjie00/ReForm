@@ -35,17 +35,11 @@ class ActionProvider {
     });
   }
   
-  
-  
-  
-
   handleChangeCriteria() {
     const message = this.createChatBotMessage('Would you like to change the criteria of patients to donate to?');
     this.updateChatbotState(message);
   }
 
-
-  
   handleOrphanedChildrenWithBlindness() {
     const messages = [
       'Your list has been updated as shown on the right panel.',
