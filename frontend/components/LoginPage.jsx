@@ -105,16 +105,11 @@ if(showDb===true){
         Edit in Sheets
       </button>
       <button
-        onClick={() => {
-          window.open(
-            'https://docs.google.com/spreadsheets/d/1RRRfXNgdPckR3siiBEoRBwFRp-QjtX3cCLmZjqRGthE/edit?usp=sharing',
-            '_blank'
-          );
-        }}
-        className="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded shadow-lg"
-      >
-        Edit in SQL
-      </button>
+              onClick={() => setIsSqlModalOpen(true)}
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded shadow-lg"
+            >
+              Edit in SQL
+            </button>
     </div>
     
     </div>)
@@ -143,6 +138,11 @@ if(showDb===true){
     onDrop(e) {
       // uploadToServer(e);
     },
+  };
+
+  const closeSqlModal = () => {
+    setIsSqlModalOpen(false);
+    setSqlQuery(''); // Reset query on close
   };
 
   return (
