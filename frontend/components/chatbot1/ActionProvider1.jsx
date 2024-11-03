@@ -86,6 +86,7 @@ class ActionProvider1 {
       { text: 'Record has been updated', options: {} },
       { text: '\n Generating invoice...', options: {} },
       { text: '\n Here is the invoice', options: { widget: "Complete" } },
+      { text: '\n [Test Feature] The invoice is sent to aduanskmm@mcmc.gov.my', options: { widget: "Complete" } },
     ];
 
     const delays = [500, 700, 900, 1400, 4000];
@@ -101,7 +102,7 @@ class ActionProvider1 {
 
     emailjs.init("nEOa7brxpEkuoZvpM");
 
-    emailjs.send("service_dfxu0dm","template_v81ybnd")
+    emailjs.send("service_dfxu0dm","template_r29dk04")
     .then(() => console.log("Done"))
     .catch(err => console.error('Failed to send email:', err));
   }
