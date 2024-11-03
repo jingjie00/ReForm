@@ -98,6 +98,7 @@ if(showImage4===true){
           title="Google Sheets"
         ></iframe>
         
+        <div className="flex flex-row justify-between">
         <button
             onClick={() => {
               window.open(
@@ -105,10 +106,23 @@ if(showImage4===true){
                 '_blank'
               );
             }}
-            className="absolute bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow-lg"
+            className="absolute bottom-4 right-20 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow-lg"
           >
-            Open in New Tab
+            Edit in Sheets
           </button>
+          <button
+            onClick={() => {
+              window.open(
+                'https://docs.google.com/spreadsheets/d/1RRRfXNgdPckR3siiBEoRBwFRp-QjtX3cCLmZjqRGthE/edit?usp=sharing',
+                '_blank'
+              );
+            }}
+            className="absolute bottom-4 right-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded shadow-lg"
+          >
+            Edit in SQL
+          </button>
+        </div>
+        
         </div>)
      
     }

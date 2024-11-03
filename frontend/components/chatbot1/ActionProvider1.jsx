@@ -38,7 +38,7 @@ class ActionProvider1 {
 
     //copy to clipboard
     navigator.clipboard
-      .writeText("I need a system to track all the invoices I generated before. I have uploaded a list.")
+      .writeText("I need a system to track all the invoices I generated before.")
   }
 
   handleQuestion2() {

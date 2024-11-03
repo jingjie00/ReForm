@@ -14,7 +14,7 @@ class MessageParser1 {
     if (lowercase.includes("I submitted a past invoice sample".toLowerCase()) ) {
       this.actionProvider.handleQuestion1();
     }
-    //Okay, I need a system to track all the invoices I generated before. I have uploaded a list.
+    //Okay, I need a system to track all the invoices I generated before.
     else if (lowercase.includes("I need a system to track all the invoices I generated before".toLowerCase())) {
       this.actionProvider.handleQuestion2();
     }
