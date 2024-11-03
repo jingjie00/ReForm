@@ -17,6 +17,7 @@ function LoginPage({ data }) {
   const [showImage4, setShowImage4] = useState(false);
   const [showImage5, setShowImage5] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showReport, setShowReport] = useState(false);
   const [iframeContent, setIframeContent] = useState(<div></div>);
   const [isSqlModalOpen, setIsSqlModalOpen] = useState(false);
   const [sqlQuery, setSqlQuery] = useState('');
@@ -119,9 +120,14 @@ function LoginPage({ data }) {
 
           {showSuccess && <div className="payment-success">Request Successful!</div>}
 
-          <Button className='w-full bg-red-500 text-white rounded-lg px-5 py-3 mt-4' onClick={() => {
+          <Button className='w-full bg-red-500 text-white cursor-none rounded-lg px-5 py-3 mt-4' onClick={() => {
             dispatch(SettingActions.setShowDb(false));
             setShowImage3(true);
+          }}>
+          </Button>
+
+          <Button className='w-full bg-[#f5f6f6] text-white cursor-none rounded-lg px-5 py-3 mt-1' onClick={() => {
+            setShowImage5(true);
           }}>
           </Button>
         </div>
