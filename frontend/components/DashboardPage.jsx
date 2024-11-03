@@ -69,12 +69,12 @@ function DashboardPage({ data }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const username = useSelector((state) => state.setting.username);
-  const [donatedAmount, setDonatedAmount] = useState(50000);
+  const [donatedAmount, setDonatedAmount] = useState(150000);
   const [L, setL] = useState(null);
   const [recentDonations, setRecentDonations] = useState([]);
   const [topDonors, setTopDonors] = useState([]);
   const [impactMetrics, setImpactMetrics] = useState({
-    peopleHelped: 152,
+    peopleHelped: 17,
     projectsFunded: 23,
     resourcesProvided: 3000,
   });
@@ -175,30 +175,30 @@ function DashboardPage({ data }) {
 
   const tilesInfo = [
     {
-      label: "Donated Amount",
+      label: "Total Revenue",
       amount: donatedAmount,
       antdIcon: (
         <DollarOutlined style={{ fontSize: "40px", color: "orange" }} />
       ),
     },
     {
-      label: 'People Helped',
+      label: 'Total Employees',
       amount: impactMetrics.peopleHelped,
       antdIcon: <UserOutlined style={{ fontSize: '40px', color: 'blue' }} />,
     },
     {
-      label: "Leadership Ranking",
-      amount: "5th",
+      label: "",
+      amount: "Big Data Awards 2023",
       antdIcon: <TrophyOutlined style={{ fontSize: "40px", color: "green" }} />,
     },
     {
-      label: 'Funds Raised',
-      amount: 'RM400,000',
+      label: 'Profits',
+      amount: 'RM80,000',
       antdIcon: <FundOutlined style={{ fontSize: '40px', color: 'purple' }} />,
     },
     {
-      label: 'Donation Growth',
-      amount: '15%',
+      label: 'Target Growth',
+      amount: '35%',
       antdIcon: <RiseOutlined style={{ fontSize: '40px', color: 'red' }} />,
     }
   ];
@@ -238,11 +238,11 @@ function DashboardPage({ data }) {
   const successStories = [
     {
       image: '/images/bg1.png',
-      quote: 'Charity A used the donations to build a new school for children in need.',
+      quote: 'Amazing quality and fast shipping! I’ll definitely shop here again!',
     },
     {
       image: '/images/bg1.png',
-      quote: 'Charity B provided clean water to over 1,000 families.',
+      quote: 'Outstanding support and a fantastic end product. Thank you, reFORM',
     },
     // Add more stories as needed
   ];
@@ -384,16 +384,16 @@ function DashboardPage({ data }) {
       <div className='w-2/3 mx-auto my-12 px-4'>
         <header className='mb-8'>
 
-      
+
           <div
             className='text-white text-center p-6 rounded-xl shadow-md bg-cover bg-center transition-transform transform hover:scale-105 duration-900'
-            style={{ backgroundImage: 'url(/images/welcomeBanner.png)' }}
+            style={{ backgroundImage: 'url(/images/backg.jpeg)' }}
           >
-            <h1 className='ml-14 text-3xl font-bold text-gray-800 animate-bounce'>
+            <h1 className='ml-14 text-4xl font-bold text-white animate-bounce'>
               Welcome to reFORM, {username || 'Jason'}
             </h1>
-            <p  className='mt-2 ml-14 text-xl text-gray-800'>
-              Your Wealth For All. The Help For Everyone
+            <p  className='mt-2 ml-14 text-xl text-white'>
+              A Revolution for All Your Forms
             </p>
           </div>
         </header>
@@ -414,87 +414,24 @@ function DashboardPage({ data }) {
             ))}
           </div>
         </Row>
+        
+        <div className='my-8 rounded-lg'>
+          <div className='bg-white p-6 rounded-lg shadow-md'>
+            <h2 className='text-lg font-bold mb-3 text-center'>Employee Performance</h2>
+            <img src="./images/performance.png" alt=""  style={{ borderRadius: '15px' }} />
+          </div>
+        </div>
 
         <div className='my-8 rounded-lg'>
           <div className='bg-white p-6 rounded-lg shadow-md'>
-            <h2 className='text-lg font-bold mb-3'>My Donation Pool</h2>
-            <div className='relative pt-1'>
-              <div className='overflow-hidden h-6 mb-4 text-xs flex rounded bg-blue-200'>
-                <div className='shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-green-500 to-yellow-500 w-3/5' />
-              </div>
-            </div>
-            <div className='flex justify-between mt-2'>
-              <span className='text-black font-bold' style={{ fontSize: '15px' }}>
-                0
-              </span>
-              <span className='text-black font-bold' style={{ fontSize: '15px' }}>
-                RM60,000
-              </span>
-            </div>
+            <h2 className='text-lg font-bold mb-3 text-center'>Monthly Sales</h2>
+            <img src="./images/sales.png" alt=""  style={{ borderRadius: '15px' }} />
           </div>
         </div>
 
         <div className='my-8'>
-          {L && (
-            <Card
-              hoverable
-              className='rounded-xl shadow-md transition-transform transform hover:scale-105 duration-1000'
-            >
-              <h2 className='text-lg font-bold mb-3'>Donation Map</h2>
-              <MapContainer
-                center={[3.139, 101.6869]}
-                zoom={5}
-                scrollWheelZoom={false}
-                style={{ height: '500px', width: '100%' }}
-              >
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-                />
-               {donationLocations.map((location) => (
-  <Marker
-    key={location.id}
-    position={location.position}
-    icon={L.icon({
-      iconUrl: '/images/marker-icon.png',
-      iconSize: [32, 32],
-    })}
-  >
-    <Popup>
-      <div className="popup-content">
-        <img src={location.imageUrl} alt={location.name} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
-        <b>{location.name}</b>
-        <br />
-        Donation Amount: {location.amount}
-        <br />
-        <table className="table-auto w-full mt-2">
-          <thead>
-            <tr>
-              <th className="px-4 py-2">Item</th>
-              <th className="px-4 py-2">Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            {location.transactions.map((transaction, index) => (
-              <tr key={index} className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}>
-                <td className="border px-4 py-2">{transaction.item}</td>
-                <td className="border px-4 py-2">{transaction.cost}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Popup>
-  </Marker>
-))}
-              </MapContainer>
-            </Card>
-          )}
-        </div>
-
-        <div className='my-8'>
           <Card className='transition-transform transform hover:scale-105 duration-900'>
-            <h2 className='text-2xl font-bold text-center mb-6'>Success Stories</h2>
+            <h2 className='text-2xl font-bold text-center mb-6'>Customer Testimonials</h2>
             <Swiper
               spaceBetween={50}
               slidesPerView={1}
@@ -518,108 +455,16 @@ function DashboardPage({ data }) {
           </Card>
         </div>
 
-        <Row gutter={[16, 16]}>
-          <Col span={12}>
-            <Card
-              hoverable
-              title='Notifications'
-              className='rounded-xl shadow-md transition-transform transform hover:scale-105 duration-900'
-            >
-              <List
-                itemLayout='horizontal'
-                dataSource={notifications}
-                renderItem={(notification) => (
-                  <List.Item>
-                    <List.Item.Meta
-                      title={notification.message}
-                      description={notification.date}
-                    />
-                  </List.Item>
-                )}
-              />
-            </Card>
-          </Col>
-
-          <Col span={12}>
-            <Card
-              hoverable
-              title='Recent Activities'
-              className='rounded-xl shadow-md transition-transform transform hover:scale-105 duration-900'
-            >
-              <List
-                itemLayout='horizontal'
-                dataSource={recentActivities}
-                renderItem={(activity) => (
-                  <List.Item>
-                    <List.Item.Meta
-                      title={activity.activity}
-                      description={activity.date}
-                    />
-                  </List.Item>
-                )}
-              />
-            </Card>
-          </Col>
-        </Row>
-
-        <div className='my-8'>
-          <Card
-            hoverable
-            title={(
-              <div className='flex gap-3 align-center items-center'>
-                <div className='text-2xl flex align-center'>Donation Transactions</div>
-                <div className=' text-xs flex align-center'>
-                  <Switch
-                    checked={showWalletAddress}
-                    onChange={() => setShowWalletAddress(!showWalletAddress)}
-                  />
-                  <div className='ml-2'>Show Wallet Address </div>
-                </div>
-              </div>
-            )}
-            className='rounded-xl shadow-md transition-transform transform hover:scale-105 duration-900'
-          >
-            <Table
-              columns={columns}
-              dataSource={dataSource}
-              pagination={false}
-              rowClassName={(record, index) => (index % 2 === 0 ? 'bg-green-100' : 'bg-green-300')}
-            />
-          </Card>
+        <div className='my-8 rounded-lg'>
+          <div className='bg-white p-6 rounded-lg shadow-md'>
+            <h2 className='text-lg font-bold mb-3 text-center'>Customer Report</h2>
+            <img src="./images/customer.png" alt=""  style={{ borderRadius: '15px' }} />
+          </div>
         </div>
 
-        <div className='my-8'>
-          <Card
-            hoverable
-            title='Donation Milestones'
-            className='rounded-xl shadow-md transition-transform transform hover:scale-105 duration-900'
-          >
-            <Timeline>
-              <Timeline.Item>Reached RM250,000 on 2024-07-30</Timeline.Item>
-              <Timeline.Item>Reached RM100,000 on 2024-07-29</Timeline.Item>
-              <Timeline.Item>Reached RM50,000 on 2024-07-28</Timeline.Item>
-              <Timeline.Item>Reached RM10,000 on 2024-07-28</Timeline.Item>
-              <Timeline.Item>Reached RM5,000 on 2024-07-28</Timeline.Item>
-              <Timeline.Item>Reached RM1,000 on 2024-07-27</Timeline.Item>
-            </Timeline>
-          </Card>
-        </div>
+        
 
-        <div className='my-8'>
-          <Card
-            hoverable
-            title='Social Media Integration'
-            className='rounded-xl shadow-md transition-transform transform hover:scale-105 duration-900'
-          >
-            <Button
-              type='primary'
-              className='rounded-lg transition-transform transform hover:scale-110 duration-900'
-              icon={<UserOutlined />}
-            >
-              Share Your Donation Activity
-            </Button>
-          </Card>
-        </div>
+        
       </div>
     </Layout>
   );

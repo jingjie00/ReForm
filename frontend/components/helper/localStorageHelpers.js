@@ -1,3 +1,4 @@
+
 // Key to store records in localStorage
 const LOCAL_STORAGE_KEY = 'records';
 
@@ -37,3 +38,4 @@ export const initializeLocalStorageWithDefaultRecords = (initialRecords = []) =>
     saveRecordsToLocalStorage(initialRecords);
   }
 };
+

@@ -28,8 +28,6 @@ function LoginPage({ data }) {
   const [iframeContent, setIframeContent] = useState(<div></div>)
   const uploadedFile = useSelector((state) => state.setting.uploadedfile);
 const showDb = useSelector((state) => state.setting.showDb);
-
-
   const [flag, setFlag] = useState(false);
 
   useEffect(() => {
