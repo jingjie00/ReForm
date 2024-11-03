@@ -147,8 +147,8 @@ function CrudPage() {
         {isAddModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <div className="bg-white w-full max-w-3xl rounded-lg shadow-lg overflow-hidden flex">
-              <div className="w-1/2 p-6 bg-gray-100">
-                <h3 className="text-lg font-semibold mb-4">Add New Record</h3>
+              <div className="w-1/2 p-6 bg-gray-100 scale-100">
+                <h3 className="text-lg font-semibold mb-4 text-xl">Add New Record</h3>
                 <input
                   type="text"
                   value={newRecordTitle}
@@ -167,7 +167,7 @@ function CrudPage() {
               <MathJaxContext config={mathJaxConfig}>
                 <div className="w-1/2 p-6 bg-white flex flex-col">
                   <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-lg font-semibold">LaTeX Preview</h3>
+                    <h3 className="text-lg font-semibold text-xl">LaTeX Preview</h3>
                     <button
                       onClick={openInOverleaf}
                       className="text-white bg-green-500 hover:bg-green-600 px-2 py-1 rounded text-sm"
@@ -201,9 +201,9 @@ function CrudPage() {
         {/* Edit Record Modal */}
         {isEditModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white w-full max-w-3xl rounded-lg shadow-lg overflow-hidden flex">
+            <div className="bg-white w-full max-w-3xl rounded-lg shadow-lg overflow-hidden flex scale-100">
               <div className="w-1/2 p-6 bg-gray-100">
-                <h3 className="text-lg font-semibold mb-4">Edit Record</h3>
+                <h3 className="text-lg font-semibold mb-4 text-xl">Edit Record</h3>
                 <input
                   type="text"
                   value={title}
@@ -222,7 +222,7 @@ function CrudPage() {
               <MathJaxContext config={mathJaxConfig}>
                 <div className="w-1/2 p-6 bg-white flex flex-col">
                   <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-lg font-semibold">LaTeX Preview</h3>
+                    <h3 className="text-lg font-semibold text-xl">LaTeX Preview</h3>
                     <button
                       onClick={openInOverleaf}
                       className="text-white bg-green-500 hover:bg-green-600 px-2 py-1 rounded text-sm"

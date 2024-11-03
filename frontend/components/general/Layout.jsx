@@ -56,6 +56,7 @@ function Layout(props) {
       action: () => {
         dispatch(SettingActions.setLoading(true));
         router.push("/request");
+        dispatch(SettingActions.setLoading(false));
       },
     },
     {
@@ -64,6 +65,7 @@ function Layout(props) {
       action: () => {
         dispatch(SettingActions.setLoading(true));
         router.push("/request");
+        dispatch(SettingActions.setLoading(false));
       },
     },
   ];
