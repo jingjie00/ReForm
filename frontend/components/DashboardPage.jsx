@@ -389,7 +389,7 @@ function DashboardPage({ data }) {
             className='text-white text-center p-6 rounded-xl shadow-md bg-cover bg-center transition-transform transform hover:scale-105 duration-900'
             style={{ backgroundImage: 'url(/images/backg.jpeg)' }}
           >
-            <h1 className='ml-14 text-3xl font-bold text-white animate-bounce'>
+            <h1 className='ml-14 text-4xl font-bold text-white animate-bounce'>
               Welcome to reFORM, {username || 'Jason'}
             </h1>
             <p  className='mt-2 ml-14 text-xl text-white'>
@@ -417,14 +417,14 @@ function DashboardPage({ data }) {
         
         <div className='my-8 rounded-lg'>
           <div className='bg-white p-6 rounded-lg shadow-md'>
-            <h2 className='text-lg font-bold mb-3'>Employee Performance</h2>
+            <h2 className='text-lg font-bold mb-3 text-center'>Employee Performance</h2>
             <img src="./images/performance.png" alt=""  style={{ borderRadius: '15px' }} />
           </div>
         </div>
 
         <div className='my-8 rounded-lg'>
           <div className='bg-white p-6 rounded-lg shadow-md'>
-            <h2 className='text-lg font-bold mb-3'>Monthly Sales</h2>
+            <h2 className='text-lg font-bold mb-3 text-center'>Monthly Sales</h2>
             <img src="./images/sales.png" alt=""  style={{ borderRadius: '15px' }} />
           </div>
         </div>
@@ -457,7 +457,7 @@ function DashboardPage({ data }) {
 
         <div className='my-8 rounded-lg'>
           <div className='bg-white p-6 rounded-lg shadow-md'>
-            <h2 className='text-lg font-bold mb-3'>Customer Report</h2>
+            <h2 className='text-lg font-bold mb-3 text-center'>Customer Report</h2>
             <img src="./images/customer.png" alt=""  style={{ borderRadius: '15px' }} />
           </div>
         </div>
