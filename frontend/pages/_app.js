@@ -25,7 +25,8 @@ import '../styles/Forum.css';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-
+  
+  
   return (
     <>
 

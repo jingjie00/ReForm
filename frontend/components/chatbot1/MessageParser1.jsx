@@ -39,6 +39,7 @@ class MessageParser1 {
       this.actionProvider.handleQuestion7();
     }else{
      this.actionProvider.handleLoading();
+     
      try {
       const res = await axios.post(
         `https://api.sambanova.ai/v1/chat/completions`,
