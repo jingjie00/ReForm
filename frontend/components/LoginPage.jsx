@@ -113,7 +113,7 @@ function LoginPage({ data }) {
           <Button className='w-full bg-red-500 text-white cursor-none rounded-lg px-5 py-3' onClick={() => {
             //dispatch(SettingActions.setShowDb(true));
             //dispatch(SettingActions.setUploadedFile(null));
-            setShowImage4(true);
+            
           }}>
           </Button>
           <Chatbot config={config1} messageParser={MessageParser1} actionProvider={ActionProvider1} />

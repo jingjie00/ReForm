@@ -100,7 +100,7 @@ function CrudPage() {
   };
 
   const openInOverleaf = () => {
-    window.open('https://www.overleaf.com/project/6726fc76928aef48ab6203e7', '_blank');
+    window.open('https://www.overleaf.com/5541751479hnmhbwvqnmsj#ddeda6', '_blank');
   };
 
   const mathJaxConfig = {
