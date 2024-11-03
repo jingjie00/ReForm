@@ -35,7 +35,7 @@ function Layout(props) {
   const middleMenu = [
     {
       key: 0,
-      label: "Home",
+      label: "Main",
       action: () => {
         dispatch(SettingActions.setLoading(true));
         router.push("/");
@@ -52,7 +52,7 @@ function Layout(props) {
     },
     {
       key: 2,
-      label: "Request",
+      label: "Templates",
       action: () => {
         dispatch(SettingActions.setLoading(true));
         router.push("/request");
@@ -61,7 +61,7 @@ function Layout(props) {
     },
     {
       key: 3,
-      label: "Request List",
+      label: "Management Console",
       action: () => {
         dispatch(SettingActions.setLoading(true));
         router.push("/request");
