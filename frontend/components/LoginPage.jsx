@@ -27,7 +27,7 @@ function LoginPage({ data }) {
   const [showSuccess, setShowSuccess] = useState(false)
 
   const uploadedFile = useSelector((state) => state.setting.uploadedfile);
-
+const showDb = useSelector((state) => state.setting.showDb);
   const [flag, setFlag] = useState(false);
 
   useEffect(() => {
@@ -64,8 +64,8 @@ function LoginPage({ data }) {
       <div className='flex flex-row h-5/6'>
         <div className='w-1/3 p-4'>
         <div className='w-full'>
-        <Button onClick={() => { setShowImage0(false);setShowImage1(false);setShowImage2(false); setShowImage3(true);setShowImage4(false);setShowImage5(false); }} className='w-full cursor-none bg-white text-white rounded-lg px-5 py-3'></Button>
-        <Button onClick={() => { setFlag(true);setShowImage0(false);setShowImage1(false);setShowImage2(false); setShowImage3(false);setShowImage4(false);setShowImage5(false); }} className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3'></Button>
+       
+        <Button  className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3'></Button>
           
           </div>
           <Chatbot
@@ -77,9 +77,8 @@ function LoginPage({ data }) {
           {showSuccess && <div className="payment-success">Request Successful!</div>}
 
           <div className='w-full'>
-          <Button onClick={() => {setShowImage0(false);setShowImage1(false);setShowImage2(false); setShowImage3(false);setShowImage5(false);setShowImage4(true) }} className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3'></Button>
-          <Button onClick={() => {setShowImage0(false);setShowImage1(false);setShowImage2(false); setShowImage3(false);setShowImage5(true);setShowImage4(false) }} className='w-full cursor-none bg-white text-white rounded-lg px-5 py-3'></Button>
-           
+          <Button className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3'></Button>
+         
           </div>
         </div>
         <div className='w-2/3 p-4'>
@@ -125,6 +124,10 @@ function LoginPage({ data }) {
               )}
             </div>
           )}
+
+          {
+showDb && <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQY__Dj1DGHH-QSQm3ZfoggADyMkkgNEi9pMwpUm052p7IdcPFNCZ8kJW7iuX7wp4R8Ah08IlPuY2M1/pubhtml?widget=true&amp;headers=false"></iframe>
+          }
 
           </div>
 

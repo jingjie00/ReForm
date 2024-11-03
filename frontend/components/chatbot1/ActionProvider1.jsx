@@ -1,4 +1,7 @@
 import emailjs from "emailjs-com"
+import PaymentButton from "../chatbot/PaymentButton";
+import { SettingActions } from "../reducers/settingReducer";
+import { useDispatch } from "react-redux";
 
 class ActionProvider1 {
   constructor(
@@ -18,16 +21,23 @@ class ActionProvider1 {
 
   handleQuestion1() {
     const messages = [
-      'Nice! I have already created an invoice template for you.'
+      'Nice! I have already created an invoice template for you. Any other files you would like me to assist you with?'
     ];
   
     const delays = [500, 900, 1000, 1400];
   
     messages.forEach((message, index) => {
       setTimeout(() => {
-        this.updateChatbotState(this.createChatBotMessage(message));
+        this.updateChatbotState(this.createChatBotMessage(message, {
+          widget: "paymentButton",
+          widgetFunc: (props) => <PaymentButton {...props} />, 
+        }));
       }, delays[index]);
     });
+
+    //copy to clipboard
+    navigator.clipboard
+      .writeText("I need a system to track all the invoices I generated before. I have uploaded a list.")
   }
 
   handleQuestion2() {
@@ -42,6 +52,9 @@ class ActionProvider1 {
         this.updateChatbotState(this.createChatBotMessage(message));
       }, delays[index]);
     });
+
+    const dispatch = useDispatch();
+    dispatch(SettingActions.setShowDb(true));
   }
 
 

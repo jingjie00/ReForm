@@ -23,6 +23,90 @@ const PaymentButton = () => {
         const imageUrl = URL.createObjectURL(file);
         setImagePreview(imageUrl);
         setCsvContent([]); // Clear CSV content if previously set
+        const newRecord = {
+          id: Date.now(),        // Generate a unique ID
+          name: "Summary Invoice" + Date.now().toString(),   // Title of the record
+          latex: String.raw`% LaTeX Simple Invoice Template
+    % By Amy Fare | amyfare.ca
+    % Source: amyfare.ca/files/simple_invoice_template.tex
+    % License: Creative Commons Attribution (CC BY 4.0)
+    % Feel free to distribute, modify, and use as you wish, but please keep this line and the 4 lines above unchanged.
+    
+    \documentclass{letter}
+    \usepackage[utf8]{inputenc}
+    \usepackage[colorlinks]{hyperref}
+    \usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry} % Document margins
+    \usepackage{graphicx}
+    \usepackage{tabularx}
+    \usepackage{multirow}
+    \usepackage{ragged2e}
+    \usepackage{hhline}
+    \usepackage{array}
+    \usepackage{helvet}   % Use Helvetica font
+    \renewcommand{\familydefault}{\sfdefault} 
+    
+    
+    \hypersetup{
+        urlcolor=blue
+    }
+    
+    \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+    
+    \begin{document}
+      
+    \thispagestyle{empty}
+    
+    % Header, for company, invoice info
+    \begin{tabularx}{\textwidth}{l X l}
+       \hspace{-8pt} \multirow{5}{}{\includegraphics[height=1.98cm]{logo_client.png}} & \textbf{J Bottle Supplier} & \hskip12pt\multirow{5}{}{\begin{tabular}{r}\footnotesize\bf INVOICE \\[-0.8ex] \footnotesize TEST01 \\[-0.4ex] \footnotesize\bf DATE \\[-0.8ex] \footnotesize \MakeUppercase{\today} \\[-0.4ex] \footnotesize\bf DUE \\[-0.8ex] \footnotesize UPON RECEIPT OF SERVICES \end{tabular}}\hspace{-6pt} \\
+       & JBS & \\
+       & JBS.my & \\
+       & +6011-38100852 & \\
+       & jbs@jingjietan.com & \\
+    \end{tabularx} 
+    
+    \vspace{1 cm}
+    
+    BILL TO
+    
+    % Recipient name
+    \Large\textbf{MCMC}\normalsize
+    
+    % Table of fees
+    \begin{tabularx}{\linewidth}{c X X X c}
+        \hline
+        & & & &\\[0.25ex]
+        \centering{\bf{Product}} & \centering{\bf{Single Price}} & \centering{\bf{Quantity}} & \centering{\bf{Discount}} & \bf Payment\\[2.5ex]\hline
+        & & & &\\
+        \centering Large Red Bottle & \centering\$3.00 & \centering 600 & \centering -\$0.00 & \$9.00\\[2.5ex]\hline
+        & & & &\\
+        & & & \bf Total & \$1800.00\\[2.5ex]\hhline{~--}
+        & & & & \\
+        & & & \bf Payment received & \$1800.00\\[2.5ex]\hhline{~--}
+        & & & & \\
+        & & & \bf Balance due & \$0.00\\[2.5ex]\hhline{~==}
+    \end{tabularx}
+    
+    \vspace{1 cm}
+    
+    \Large\textbf{Payment instructions}\normalsize
+    
+    \vspace{0.1 cm}
+    
+    \textbf{E-transfer}\\
+    jbs@jingjietan.com
+    
+    \textbf{TNG}\\
+    \href{https://tng.com}{6011-38100852}
+    
+    \end{document}`,  // LaTeX content of the record
+        };
+      
+        // Dispatch the new record to the Redux store
+        dispatch(SettingActions.addRecord(newRecord));
+    
+        navigator.clipboard.writeText('I submitted a past invoice sample.');
+    
       }
       // Check if the file is a CSV
       else if (fileType === "text/csv") {
@@ -47,90 +131,6 @@ const PaymentButton = () => {
     const data = rows.map((row) => row.split(","));
     setCsvContent(data);
     dispatch(SettingActions.setUploadedFile(data));
-
-    const newRecord = {
-      id: Date.now(),        // Generate a unique ID
-      name: "Summary Invoice" + Date.now().toString(),   // Title of the record
-      latex: String.raw`% LaTeX Simple Invoice Template
-% By Amy Fare | amyfare.ca
-% Source: amyfare.ca/files/simple_invoice_template.tex
-% License: Creative Commons Attribution (CC BY 4.0)
-% Feel free to distribute, modify, and use as you wish, but please keep this line and the 4 lines above unchanged.
-
-\documentclass{letter}
-\usepackage[utf8]{inputenc}
-\usepackage[colorlinks]{hyperref}
-\usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry} % Document margins
-\usepackage{graphicx}
-\usepackage{tabularx}
-\usepackage{multirow}
-\usepackage{ragged2e}
-\usepackage{hhline}
-\usepackage{array}
-\usepackage{helvet}   % Use Helvetica font
-\renewcommand{\familydefault}{\sfdefault} 
-
-
-\hypersetup{
-    urlcolor=blue
-}
-
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-
-\begin{document}
-	
-\thispagestyle{empty}
-
-% Header, for company, invoice info
-\begin{tabularx}{\textwidth}{l X l}
-   \hspace{-8pt} \multirow{5}{}{\includegraphics[height=1.98cm]{logo_client.png}} & \textbf{J Bottle Supplier} & \hskip12pt\multirow{5}{}{\begin{tabular}{r}\footnotesize\bf INVOICE \\[-0.8ex] \footnotesize TEST01 \\[-0.4ex] \footnotesize\bf DATE \\[-0.8ex] \footnotesize \MakeUppercase{\today} \\[-0.4ex] \footnotesize\bf DUE \\[-0.8ex] \footnotesize UPON RECEIPT OF SERVICES \end{tabular}}\hspace{-6pt} \\
-   & JBS & \\
-   & JBS.my & \\
-   & +6011-38100852 & \\
-   & jbs@jingjietan.com & \\
-\end{tabularx} 
-
-\vspace{1 cm}
-
-BILL TO
-
-% Recipient name
-\Large\textbf{MCMC}\normalsize
-
-% Table of fees
-\begin{tabularx}{\linewidth}{c X X X c}
-    \hline
-    & & & &\\[0.25ex]
-    \centering{\bf{Product}} & \centering{\bf{Single Price}} & \centering{\bf{Quantity}} & \centering{\bf{Discount}} & \bf Payment\\[2.5ex]\hline
-    & & & &\\
-    \centering Large Red Bottle & \centering\$3.00 & \centering 600 & \centering -\$0.00 & \$9.00\\[2.5ex]\hline
-    & & & &\\
-    & & & \bf Total & \$1800.00\\[2.5ex]\hhline{~--}
-    & & & & \\
-    & & & \bf Payment received & \$1800.00\\[2.5ex]\hhline{~--}
-    & & & & \\
-    & & & \bf Balance due & \$0.00\\[2.5ex]\hhline{~==}
-\end{tabularx}
-
-\vspace{1 cm}
-
-\Large\textbf{Payment instructions}\normalsize
-
-\vspace{0.1 cm}
-
-\textbf{E-transfer}\\
-jbs@jingjietan.com
-
-\textbf{TNG}\\
-\href{https://tng.com}{6011-38100852}
-
-\end{document}`,  // LaTeX content of the record
-    };
-  
-    // Dispatch the new record to the Redux store
-    dispatch(SettingActions.addRecord(newRecord));
-
-    await navigator.clipboard.writeText('I submitted a past invoice sample.');
   };
 
   // Clean up the generated URL when the component unmounts
