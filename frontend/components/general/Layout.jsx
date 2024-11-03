@@ -1,30 +1,14 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useRef, useEffect, useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
 import { useSelector, useDispatch } from "react-redux";
-import { Carousel } from "react-responsive-carousel";
-import Link from "next/link";
 import {
-  PlusOutlined,
-  UpOutlined,
-  CloseCircleFilled,
-  AndroidFilled,
   UserOutlined,
+  MenuOutlined,
 } from "@ant-design/icons";
-import _, { stubTrue } from "lodash";
-import axios from "axios";
-import { BackTop, Button } from "antd";
 import Aos from "aos";
 import LoadingModal from "../dialog/LoadingModal";
 import AlertModal from "../dialog/AlertModal";
 import { SettingActions } from "../reducers/settingReducer";
-import MenuSection from "./MenuSection";
-import { logoIcon } from "../../images";
-import { current } from "@reduxjs/toolkit";
-import { setRequestMeta } from "next/dist/server/request-meta";
 
 function Layout(props) {
   const dispatch = useDispatch();
@@ -34,36 +18,36 @@ function Layout(props) {
   const isChatbotOpen = useSelector((state) => state.setting.isChatbotOpen);
   const isLogin = useSelector((state) => state.setting.isLogin);
   const userInputLatest = useSelector((state) => state.setting.userInputLatest);
-  const [currentUrl, setCurrentUrl] = useState("");
-
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     console.log(userInputLatest);
-
   }, [userInputLatest]);
-
-
 
   useEffect(() => {
     Aos.init();
   }, []);
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   const middleMenu = [
     {
       key: 0,
-      label: "Dashboard",
+      label: "Home",
       action: () => {
         dispatch(SettingActions.setLoading(true));
-        router.push("/dashboard");
+        router.push("/");
       },
     },
     {
       key: 1,
-      label: "Donate",
+      label: "Dashboard",
       action: async () => {
         await navigator.clipboard.writeText("RM50000 for brain diseases");
         dispatch(SettingActions.setLoading(true));
-        router.push("/donate");
+        router.push("/dashboard");
       },
     },
     {
@@ -79,105 +63,99 @@ function Layout(props) {
       label: "Request List",
       action: () => {
         dispatch(SettingActions.setLoading(true));
-        router.push("/requestlist");
+        router.push("/request");
       },
     },
   ];
 
+  const renderMenu = () => {
+    if (!menuOpen) return null;
+    return (
+      <div className="absolute left-0 top-16 bg-white shadow-lg rounded-lg w-48 z-50 border border-gray-300">
+        <ul className="flex flex-col">
+          {middleMenu.map(item => (
+            <li key={item.key}>
+              <button
+                onClick={item.action}
+                className="block px-4 py-2 hover:bg-gray-100 transition duration-200 ease-in-out w-full text-left font-semibold"
+              >
+                {item.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
   return (
     <>
-      <div className="">
-        <div className="">
-          <div className="">
-            <div className="relative bg-custom h-screen overflow-hidden text-black">
-              <div className="">
-                <div
-                  id="page-container"
-                  className=" h-screen overflow-y-auto hidden-scrollbar"
-                >
-                  <div className="">
-                    <div
-                      id="pageHeader"
-                      className=" z-50 bg-white pb-1 pt-3 px-5 flex justify-center align-center shadow-xl shadow shadow-gray-200"
-                    >
-                     <img
-                            alt="EvestAI Logo"
-                            onClick={() => {
-                              dispatch(SettingActions.setLoading(true));
-                              router.push("/");
-                              
-                              dispatch(SettingActions.setSelected(null));
-                              dispatch(SettingActions.setLoading(false));
-                            }}
-                            src="/images/logo.png"
-                          />
+      <div className="h-screen w-full overflow-hidden">
+        <div className="relative h-full w-full text-gray-800 bg-gray-100">
+          <div id="page-container" className="h-full overflow-y-auto hidden-scrollbar">
+            <div id="pageHeader" className="z-50 bg-white pb-3 pt-3 px-5 flex justify-between items-center shadow-lg rounded-b-lg">
+              <MenuOutlined
+                onClick={toggleMenu}
+                style={{ fontSize: "32px", color: "#1B57F0" }}
+                className="cursor-pointer hover:text-blue-600 transition duration-200"
+              />
+              <img
+                alt="EvestAI Logo"
+                className="h-12 cursor-pointer"
+                onClick={() => {
+                  dispatch(SettingActions.setLoading(true));
+                  router.push("/");
+                  dispatch(SettingActions.setSelected(null));
+                  dispatch(SettingActions.setLoading(false));
+                }}
+                src="/images/logo.png"
+              />
+              <div className="flex items-center justify-end space-x-4"> {/* Added space between icons */}
+                {isLogin && (
+                  <UserOutlined
+                    style={{ fontSize: "32px", color: "#1B57F0" }}
+                    className="pt-1 cursor-default transition duration-200 hover:text-blue-600"
+                  />
+                )}
+                <UserOutlined // Profile icon added
+                  style={{ fontSize: "32px", color: "#1B57F0" }}
+                  className="pt-1 cursor-default transition duration-200 hover:text-blue-600"
+                />
+              </div>
+            </div>
 
-                      {/* <div className="flex items-center align-center">
-                        <MenuSection menuRow={middleMenu} />
-                      </div> */}
+            {renderMenu()}
 
-                 
-                      <div className="col-span-5 col-start-8 md:col-span-10 flex items-center align-center ">
-                        <div className="flex items-center justify-end md:justify-between w-full">
-                        {isLogin && <UserOutlined
-                          style={{ fontSize: "32px", color: "#1B57F0" }}
-                          className="pt-1 cursor-pointer"
-                          
-
-                        
-                        />}
-
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="relative container mx-auto">
-                      <div className="mb-auto h-screen">
-                        <div className="h-screen">
-                          <div className="grid grid-cols-12">
-                            <div
-                              className={`${
-                                isChatbotOpen ? "col-span-9" : "col-span-12"
-                              } h-screen px-4`}
-                            >
-                              <div className="games-container">
-                                <div className="relative">{props.children}</div>
-                              </div>
-                            </div>
-                            {isChatbotOpen && (
-                              <div
-                                className=" shadow-2xl shadow-gray-500  col-span-3 bg-white text-white  transition-opacity duration-500 ease-in-out"
-                                id="chatbot-region"
-                              >
-                                <div className="col-span-3 w-full h-full">
-                                  <div className="w-full h-full">
-                                    <Chatbot
-                                      config={selectedConfigLocal}
-                                      actionProvider={ActionProvider}
-                                      messageParser={MessageParser}
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </div>
+            <div className="relative container mx-auto h-full">
+              <div className="mb-auto h-full flex">
+                <div className={`${isChatbotOpen ? "w-9/12" : "w-full"} h-full px-4`}>
+                  <div className="games-container h-full">
+                    <div className="relative h-full">{props.children}</div>
+                  </div>
+                </div>
+                {isChatbotOpen && (
+                  <div className="shadow-2xl shadow-gray-500 w-3/12 bg-white text-white transition-opacity duration-500 ease-in-out" id="chatbot-region">
+                    <div className="col-span-3 w-full h-full">
+                      <div className="w-full h-full">
+                        <Chatbot
+                          config={selectedConfigLocal}
+                          actionProvider={ActionProvider}
+                          messageParser={MessageParser}
+                        />
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* modals */}
+      {/* Modals */}
       <div className="text-white">
         {isLoading && <LoadingModal />}
-        {isAlert.length > 0 && (
-          <AlertModal message={isAlert[0]?.msg} action={isAlert[1]} />
-        )}
+        {isAlert.length > 0 && <AlertModal message={isAlert[0]?.msg} action={isAlert[1]} />}
       </div>
     </>
   );

@@ -11,9 +11,6 @@ export const routes = {
   login: {
     to: () => '/login',
   },
-  register: {
-    to: () => '/register',
-  },
   donate: {
     to: () => '/donate',
   },

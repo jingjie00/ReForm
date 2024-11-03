@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, List, message } from 'antd';
+import { Button, message } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { SettingActions } from './reducers/settingReducer';
@@ -21,18 +21,15 @@ function CrudPage() {
     if (!newRecordTitle.trim() || !newRecordLatex.trim()) {
       return message.error('Both title and LaTeX content are required!');
     }
-  
-    // Create a new record with id, name, and latex properties
+
     const newRecord = {
-      id: Date.now(),        // Generate a unique ID
-      name: newRecordTitle,   // Title of the record
-      latex: newRecordLatex,  // LaTeX content of the record
+      id: Date.now(),
+      name: newRecordTitle,
+      latex: newRecordLatex,
     };
-  
-    // Dispatch the new record to the Redux store
+
     dispatch(SettingActions.addRecord(newRecord));
-    
-    // Reset the input fields and close the modal
+
     setNewRecordTitle('');
     setNewRecordLatex('');
     setIsAddModalOpen(false);
@@ -68,55 +65,51 @@ function CrudPage() {
     window.open('https://www.overleaf.com/project/6726fc76928aef48ab6203e7', '_blank');
   };
 
-  // MathJax configuration to support inline and display math
   const mathJaxConfig = {
     tex2jax: {
       inlineMath: [['$', '$'], ['\\(', '\\)']],
       displayMath: [['$$', '$$'], ['\\[', '\\]']],
     },
   };
+
   return (
     <Layout>
       <div className="my-10 mx-auto max-w-3xl">
-        <div className="flex justify-between items-center mb-5">
-          <h2 className="text-2xl font-bold">CRUD Actions</h2>
-          <Button type="primary" icon={<PlusOutlined />} onClick={openAddModal}>
-            Add Record
-          </Button>
+        {/* Rounded box for "Edit Your Templates" section */}
+        <div className="border rounded-lg shadow-lg p-6 mb-5 bg-gray-50">
+          <div className="flex justify-between items-center mb-5">
+            <h2 className="text-2xl font-bold text-gray-800">Edit Your Templates</h2>
+            <Button type="primary" icon={<PlusOutlined />} onClick={openAddModal}>
+              Add Record
+            </Button>
+          </div>
+          <div className="border rounded-lg shadow-lg divide-y divide-gray-200">
+            {records.map((record) => (
+              <div
+                key={record.id}
+                className="flex justify-between items-center p-4 hover:bg-blue-500 hover:text-white transition duration-200 cursor-pointer rounded-lg"
+                onClick={() => openEditModal(record)}
+              >
+                <span className="text-lg font-medium">{record.name}</span>
+                <div className="space-x-4"> {/* Increased space between buttons */}
+                  <Button icon={<EditOutlined />} onClick={(e) => e.stopPropagation()} />
+                  <Button
+                    icon={<DeleteOutlined />}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDeleteRecord(record.id);
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="border rounded-lg divide-y divide-gray-200">
-  {records.map((record) => (
-    <div
-      key={record.id}
-      className="flex justify-between items-center p-4 hover:bg-gray-50 cursor-pointer"
-      onClick={() => openEditModal(record)}
-    >
-      {/* Render only record.name here, which should be a string */}
-      <span className="cursor-pointer text-lg">{record.name}</span>
-      <div className="space-x-2">
-        <Button 
-          icon={<EditOutlined />} 
-          onClick={(e) => e.stopPropagation()} 
-        />
-        <Button
-          icon={<DeleteOutlined />}
-          onClick={(e) => {
-            e.stopPropagation();
-            handleDeleteRecord(record.id);
-          }}
-        />
-      </div>
-    </div>
-  ))}
-</div>
-
-
 
         {/* Add Record Modal */}
         {isAddModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white w-full max-w-[60%] h-3/4 rounded-lg shadow-lg overflow-y-scroll flex">
-              {/* Left Side - Title and Raw LaTeX Input */}
+            <div className="bg-white w-full max-w-3xl rounded-lg shadow-lg overflow-hidden flex">
               <div className="w-1/2 p-6 bg-gray-100">
                 <h3 className="text-lg font-semibold mb-4">Add New Record</h3>
                 <input
@@ -124,17 +117,16 @@ function CrudPage() {
                   value={newRecordTitle}
                   onChange={(e) => setNewRecordTitle(e.target.value)}
                   placeholder="Enter record title"
-                  className="w-full p-2 mb-4 border border-gray-300 rounded-md"
+                  className="w-full p-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <textarea
                   value={newRecordLatex}
                   onChange={(e) => setNewRecordLatex(e.target.value)}
-                  className="w-full h-3/4 border border-gray-300 p-4 rounded-md resize-none"
+                  className="w-full h-48 border border-gray-300 p-4 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter LaTeX content here..."
                 />
               </div>
 
-              {/* Right Side - Rendered LaTeX Preview */}
               <MathJaxContext config={mathJaxConfig}>
                 <div className="w-1/2 p-6 bg-white flex flex-col">
                   <div className="flex justify-between items-center mb-4">
@@ -152,13 +144,13 @@ function CrudPage() {
                   <div className="flex justify-end mt-4">
                     <button
                       onClick={() => setIsAddModalOpen(false)}
-                      className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400 mr-2"
+                      className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400 mr-2 transition duration-200"
                     >
                       Cancel
                     </button>
                     <button
                       onClick={handleAddRecord}
-                      className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                      className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200"
                     >
                       Add Record
                     </button>
@@ -172,8 +164,7 @@ function CrudPage() {
         {/* Edit Record Modal */}
         {isEditModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white w-full max-w-6xl h-3/4 rounded-lg shadow-lg overflow-hidden flex">
-              {/* Left Side - Title and Raw LaTeX Input */}
+            <div className="bg-white w-full max-w-3xl rounded-lg shadow-lg overflow-hidden flex">
               <div className="w-1/2 p-6 bg-gray-100">
                 <h3 className="text-lg font-semibold mb-4">Edit Record</h3>
                 <input
@@ -181,17 +172,16 @@ function CrudPage() {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Edit record title"
-                  className="w-full p-2 mb-4 border border-gray-300 rounded-md"
+                  className="w-full p-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <textarea
                   value={markdown}
                   onChange={(e) => setMarkdown(e.target.value)}
-                  className="w-full h-full border border-gray-300 p-4 rounded-md resize-none"
+                  className="w-full h-48 border border-gray-300 p-4 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Edit LaTeX content here..."
                 />
               </div>
 
-              {/* Right Side - Rendered LaTeX Preview */}
               <MathJaxContext config={mathJaxConfig}>
                 <div className="w-1/2 p-6 bg-white flex flex-col">
                   <div className="flex justify-between items-center mb-4">
@@ -209,13 +199,13 @@ function CrudPage() {
                   <div className="flex justify-end mt-4">
                     <button
                       onClick={() => setIsEditModalOpen(false)}
-                      className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400 mr-2"
+                      className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400 mr-2 transition duration-200"
                     >
                       Cancel
                     </button>
                     <button
                       onClick={handleEditRecord}
-                      className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+                      className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition duration-200"
                     >
                       Save Changes
                     </button>
