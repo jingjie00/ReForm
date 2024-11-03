@@ -169,7 +169,7 @@ class ActionProvider1 {
     // split messages on \n 
     const messagesArr = messages.split('\n');
   
-    messagessArr.forEach((message, index) => {
+    messagesArr.forEach((message, index) => {
       setTimeout(() => {
         this.updateChatbotState(this.createChatBotMessage(message));
       }, 100);

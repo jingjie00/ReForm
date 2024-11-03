@@ -1,4 +1,6 @@
 import { callApi } from "../helper/localStorageHelpers";
+import axios from 'axios';
+
 
 class MessageParser1 {
   constructor(actionProvider, state) {
@@ -37,9 +39,37 @@ class MessageParser1 {
       this.actionProvider.handleQuestion7();
     }else{
      this.actionProvider.handleLoading();
-     const results = await callApi();
+     try {
+      const res = await axios.post(
+        `https://api.sambanova.ai/v1/chat/completions`,
+        {
+          model: 'Meta-Llama-3.1-8B-Instruct',
+          messages: [
+            { role: 'system', content: 'You are the chatbot for a website selling plastic containers, such as bottles. Respond in this context. You may integrate news and address user queries.' },
+            { role: 'user', content: 'How many bottles are there?' }
+          ],
+          temperature: 0.1,
+          top_p: 0.1
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer 0cc39982-4848-46ca-959b-ef7dcbbed829`
+          },
+          timeout: 10000 // 10 seconds timeout in milliseconds
+        }
+      );
     
-     this.actionProvider.handleOther(results);
+      // Set the API response
+      let result = res.data.choices[0].message.content;
+      this.actionProvider.handleOther(result);
+    
+    } catch (err) {
+      console.error('API call error:', err.message);
+      let result = 'Sorry, Please try again. Kindly check your internet connection or API configuration.';
+      this.actionProvider.handleOther(result);
+    }
+
     }
   }
 }
