@@ -15,6 +15,8 @@ export const settingSlice = createSlice({
     username: '',
     records: loadRecordsFromLocalStorage(), 
     uploadedfile: null,
+    showDb: false,
+    showReport: false
   },
   reducers: {
     setLoading: (state, action) => ({
@@ -65,6 +67,14 @@ export const settingSlice = createSlice({
     setUploadedFile: (state, action) => ({
       ...state,
       uploadedfile: action.payload,
+    }),
+    setShowDb: (state, action) => ({
+      ...state,
+      showDb: action.payload,
+    }),
+    setShowReport: (state, action) => ({
+      ...state,
+      showReport: action.payload,
     }),
 
   },

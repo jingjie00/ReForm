@@ -115,7 +115,9 @@ function CrudPage() {
       <div className="my-10 mx-auto max-w-3xl">
         <div className="border rounded-lg shadow-lg p-6 mb-5 bg-gray-50">
           <div className="flex justify-between items-center mb-5">
-            <h2 className="text-2xl font-bold text-gray-800">Edit Your Templates</h2>
+            <h2 className="text-2xl font-bold text-gray-800" onClick={()=>{
+              window.location.reload();
+            }}>Edit Your Templates</h2>
             <Button type="primary" icon={<PlusOutlined />} onClick={openAddModal}>
               Add Record
             </Button>
