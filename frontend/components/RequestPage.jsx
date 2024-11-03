@@ -159,7 +159,7 @@ function CrudPage() {
                 <textarea
                   value={newRecordLatex}
                   onChange={(e) => setNewRecordLatex(e.target.value)}
-                  className="w-full h-48 border border-gray-300 p-4 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full h-3/4 border border-gray-300 p-4 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter LaTeX content here..."
                 />
               </div>
@@ -201,7 +201,7 @@ function CrudPage() {
         {/* Edit Record Modal */}
         {isEditModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="bg-white w-full max-w-3xl rounded-lg shadow-lg overflow-hidden flex scale-100">
+            <div className="bg-white w-full h-3/4 max-w-3xl rounded-lg shadow-lg overflow-hidden flex scale-100">
               <div className="w-1/2 p-6 bg-gray-100">
                 <h3 className="text-lg font-semibold mb-4 text-xl">Edit Record</h3>
                 <input
@@ -214,7 +214,7 @@ function CrudPage() {
                 <textarea
                   value={markdown}
                   onChange={(e) => setMarkdown(e.target.value)}
-                  className="w-full h-48 border border-gray-300 p-4 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full h-3/4 border border-gray-300 p-4 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Edit LaTeX content here..."
                 />
               </div>
