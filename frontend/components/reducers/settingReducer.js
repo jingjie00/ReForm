@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { loadRecordsFromLocalStorage, saveRecordsToLocalStorage } from '../helper/localStorageHelpers';
 
 
 export const settingSlice = createSlice({
@@ -11,7 +12,8 @@ export const settingSlice = createSlice({
     isChatbotOpen: false,
     userInputLatest: '',
     fromForum: '',
-    username: ''
+    username: '',
+    records: loadRecordsFromLocalStorage(), 
   },
   reducers: {
     setLoading: (state, action) => ({
@@ -46,6 +48,20 @@ export const settingSlice = createSlice({
       ...state,
       username: action.payload,
     }),
+    setInitialRecords: (state, action) => ({  
+      ...state,
+      initialRecords: action.payload,
+    }),
+    addRecord: (state, action) => {
+      const newRecord = action.payload
+      state.records.push(newRecord); // Now this should work
+      saveRecordsToLocalStorage(state.records); // Sync with localStorage
+    },
+    deleteRecord: (state, action) => {
+      state.records = state.records.filter((record) => record.id !== action.payload);
+      saveRecordsToLocalStorage(state.records); // Sync with localStorage
+    },
+
   },
 });
 

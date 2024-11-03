@@ -1,146 +1,233 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
-import Aos from 'aos';
-import Layout from './general/Layout';
+import React, { useState } from 'react';
+import { Button, List, message } from 'antd';
+import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
 import { SettingActions } from './reducers/settingReducer';
-import Chatbot from "react-chatbot-kit";
-import config1 from "./chatbot1/config1";
-import MessageParser1 from "./chatbot1/MessageParser1";
-import ActionProvider1 from "./chatbot1/ActionProvider1";
-import Dragger from 'antd/lib/upload/Dragger';
-import { UploadOutlined } from '@ant-design/icons';
-import { Button, Form } from 'antd';
-import { useFetcher } from 'react-router-dom';
-import axios from "axios";
+import Layout from './general/Layout';
+import { MathJax, MathJaxContext } from 'better-react-mathjax';
 
-const putWalletApi = () => {
-  var uniqueID = crypto.randomUUID();
-  return axios
-    .request({
-      method: "PUT",
-      url: "https://service-testnet.maschain.com/api/wallet/entity/17",
-      headers: {
-        "Content-Type": "application/json",
-        client_id:
-          "0264a6a2135d0b766d212db38a1a0fcd2334c651acb32b69098c2fb0c6c98db9",
-        client_secret:
-          "sk_59bb96279047f2365169a00b7ced5e4d39f5ed5e7da417b3d5c1d849dd697318",
-      },
-      data: {
-        name: "reFORM " + uniqueID,
-        external_id: null,
-      },
-    })
-    .then((response) => console.log(response))
-    .catch((error) => false);
-};
-
-function RequestPage({ data }) {
-  const router = useRouter();
+function CrudPage() {
   const dispatch = useDispatch();
-  const [showImage0, setShowImage0] = useState(false);
-  const [showImage1, setShowImage1] = useState(false);
-  const [showImage2, setShowImage2] = useState(false);
-  const [showImage3, setShowImage3] = useState(false);
-  const [showImage4, setShowImage4] = useState(false);
-  const [showImage5, setShowImage5] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false)
+  const records = useSelector((state) => state.setting.records);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [newRecordTitle, setNewRecordTitle] = useState('');
+  const [newRecordLatex, setNewRecordLatex] = useState('');
+  const [selectedRecord, setSelectedRecord] = useState(null);
+  const [markdown, setMarkdown] = useState('');
+  const [title, setTitle] = useState('');
 
-  useEffect(() => {
-    dispatch(SettingActions.setLoading(false));
-    Aos.init();
-    //putWalletApi();
-  }, []);
+  const handleAddRecord = () => {
+    if (!newRecordTitle.trim() || !newRecordLatex.trim()) {
+      return message.error('Both title and LaTeX content are required!');
+    }
+  
+    // Create a new record with id, name, and latex properties
+    const newRecord = {
+      id: Date.now(),        // Generate a unique ID
+      name: newRecordTitle,   // Title of the record
+      latex: newRecordLatex,  // LaTeX content of the record
+    };
+  
+    // Dispatch the new record to the Redux store
+    dispatch(SettingActions.addRecord(newRecord));
+    
+    // Reset the input fields and close the modal
+    setNewRecordTitle('');
+    setNewRecordLatex('');
+    setIsAddModalOpen(false);
+    message.success('Record added successfully');
+  };
 
-  const verifyUploadProps = {
-    name: 'attachments',
-    multiple: true,
-    // accept: 'image/jpg, .pdf',
-    async onChange(e) {
-      if (e.fileList.length ==0 ) {
-        await navigator.clipboard.writeText('I submitted a past invoice sample.');
-        setShowImage0(true);
-      } else if (e.fileList.length == 1) {
-        await navigator.clipboard.writeText('Ok. I need a system to track all invoice I generated before. I uploaded a excel list');
-        setShowImage1(true);
-      } else {
-        await navigator.clipboard.writeText('Here you go');
-        setShowImage2(true);
-      }
-      
-    },
-    onDrop(e) {
-      //uploadToServer(e);
+  const handleEditRecord = () => {
+    if (!title.trim() || !markdown.trim()) {
+      return message.error('Both title and LaTeX content are required!');
+    }
+    dispatch(SettingActions.updateRecord({ id: selectedRecord.id, name: title, latex: markdown }));
+    message.success('Record updated successfully');
+    setIsEditModalOpen(false);
+  };
+
+  const handleDeleteRecord = (id) => {
+    dispatch(SettingActions.deleteRecord(id));
+    message.success('Record deleted');
+  };
+
+  const openAddModal = () => {
+    setIsAddModalOpen(true);
+  };
+
+  const openEditModal = (record) => {
+    setSelectedRecord(record);
+    setTitle(record.name);
+    setMarkdown(record.latex);
+    setIsEditModalOpen(true);
+  };
+
+  const openInOverleaf = () => {
+    window.open('https://www.overleaf.com/project/6726fc76928aef48ab6203e7', '_blank');
+  };
+
+  // MathJax configuration to support inline and display math
+  const mathJaxConfig = {
+    tex2jax: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
     },
   };
-  
   return (
     <Layout>
-      <div className='flex flex-row h-5/6'>
-        <div className='w-1/3 p-4'>
-        <div className='w-full'>
-        <Button onClick={() => { setShowImage0(false);setShowImage1(false);setShowImage2(false); setShowImage3(true);setShowImage4(false);setShowImage5(false); }} className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3 my-5'></Button>
-        <Button onClick={() => { setShowImage0(false);setShowImage1(false);setShowImage2(false); setShowImage3(false);setShowImage4(false);setShowImage5(false); }} className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3 my-5'></Button>
-            
-          </div>
-          <Chatbot
-            config={config1}
-            messageParser={MessageParser1}
-            actionProvider={ActionProvider1}
-          />
-
-          {showSuccess && <div className="payment-success">Request Successful!</div>}
-
-          <div className='w-full'>
-          <Button onClick={() => {setShowImage0(false);setShowImage1(false);setShowImage2(false); setShowImage3(false);setShowImage5(false);setShowImage4(true) }} className='w-full cursor-none bg-red-500 text-white rounded-lg px-5 py-3'></Button>
-          <Button onClick={() => {setShowImage0(false);setShowImage1(false);setShowImage2(false); setShowImage3(false);setShowImage5(true);setShowImage4(false) }} className='w-full cursor-none bg-white text-white rounded-lg px-5 py-3'></Button>
-           
-          </div>
+      <div className="my-10 mx-auto max-w-3xl">
+        <div className="flex justify-between items-center mb-5">
+          <h2 className="text-2xl font-bold">CRUD Actions</h2>
+          <Button type="primary" icon={<PlusOutlined />} onClick={openAddModal}>
+            Add Record
+          </Button>
         </div>
-        <div className='w-2/3 p-4'>
-        {(!showImage3 && !showImage4 && !showImage5) &&  <Dragger {...verifyUploadProps}>
-            <div className='p-3 w-full border rounded-lg flex flex-col mt-2.5'>
-              <div
-                className='items-center align-center flex justify-center h-1/5'
-                style={{
-                  height: '8em',
-                }}
-              >
-                <UploadOutlined style={{ fontSize: '6em', opacity: '0.6' }} />
+        <div className="border rounded-lg divide-y divide-gray-200">
+  {records.map((record) => (
+    <div
+      key={record.id}
+      className="flex justify-between items-center p-4 hover:bg-gray-50 cursor-pointer"
+      onClick={() => openEditModal(record)}
+    >
+      {/* Render only record.name here, which should be a string */}
+      <span className="cursor-pointer text-lg">{record.name}</span>
+      <div className="space-x-2">
+        <Button 
+          icon={<EditOutlined />} 
+          onClick={(e) => e.stopPropagation()} 
+        />
+        <Button
+          icon={<DeleteOutlined />}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleDeleteRecord(record.id);
+          }}
+        />
+      </div>
+    </div>
+  ))}
+</div>
+
+
+
+        {/* Add Record Modal */}
+        {isAddModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white w-full max-w-[60%] h-3/4 rounded-lg shadow-lg overflow-y-scroll flex">
+              {/* Left Side - Title and Raw LaTeX Input */}
+              <div className="w-1/2 p-6 bg-gray-100">
+                <h3 className="text-lg font-semibold mb-4">Add New Record</h3>
+                <input
+                  type="text"
+                  value={newRecordTitle}
+                  onChange={(e) => setNewRecordTitle(e.target.value)}
+                  placeholder="Enter record title"
+                  className="w-full p-2 mb-4 border border-gray-300 rounded-md"
+                />
+                <textarea
+                  value={newRecordLatex}
+                  onChange={(e) => setNewRecordLatex(e.target.value)}
+                  className="w-full h-3/4 border border-gray-300 p-4 rounded-md resize-none"
+                  placeholder="Enter LaTeX content here..."
+                />
               </div>
-              <div
-                className='flex justify-center align-center mb-3'
-                style={{ opacity: '0.6' }}
-              >
-                Upload File
-              </div>
-              {/* <div>
-                     <Button
-                       className='flex border-2 border rounded-lg h-10 w-full text-center items-center justify-center button-primary'
-                     >
-                       <span className='font-semibold text-sm uppercase leading-none'>
-                        Choose to Upload
-                       </span>
-                     </Button>
-                   </div> */}
+
+              {/* Right Side - Rendered LaTeX Preview */}
+              <MathJaxContext config={mathJaxConfig}>
+                <div className="w-1/2 p-6 bg-white flex flex-col">
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-lg font-semibold">LaTeX Preview</h3>
+                    <button
+                      onClick={openInOverleaf}
+                      className="text-white bg-green-500 hover:bg-green-600 px-2 py-1 rounded text-sm"
+                    >
+                      Open in Overleaf
+                    </button>
+                  </div>
+                  <div className="flex-1 overflow-auto p-4 border border-gray-200 rounded-md bg-gray-50">
+                    <MathJax dynamic>{newRecordLatex}</MathJax>
+                  </div>
+                  <div className="flex justify-end mt-4">
+                    <button
+                      onClick={() => setIsAddModalOpen(false)}
+                      className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400 mr-2"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={handleAddRecord}
+                      className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                    >
+                      Add Record
+                    </button>
+                  </div>
+                </div>
+              </MathJaxContext>
             </div>
-          </Dragger>}
-         
-
-          <div className={`flex gap ${showImage3||showImage4||showImage5  ? 'h-full' : 'h-1/2'}`}>
-          {showImage0 && <img src="/images/user_submit.jpg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
-            {showImage1 && <img src="/images/invoice_summary.jpg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
-            {showImage2 && <img src="/images/stock_count.png" className="w-1/4" alt="" onClick={() => setShowSuccess(true)} />}
-            {showImage3 && <iframe className='w-full h-full' src="/images/mcmc invoice.pdf" title="MCMC invoice"></iframe>}
-            {showImage4 && <iframe className='w-full h-full' src="/images/stock_report.pdf" title="Stock Report"></iframe>}
-            {showImage5 && <iframe className='w-full h-full' src="/images/trend_analysis.pdf" title="Trend Analysis"></iframe>}
           </div>
+        )}
 
-        </div>
+        {/* Edit Record Modal */}
+        {isEditModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="bg-white w-full max-w-6xl h-3/4 rounded-lg shadow-lg overflow-hidden flex">
+              {/* Left Side - Title and Raw LaTeX Input */}
+              <div className="w-1/2 p-6 bg-gray-100">
+                <h3 className="text-lg font-semibold mb-4">Edit Record</h3>
+                <input
+                  type="text"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="Edit record title"
+                  className="w-full p-2 mb-4 border border-gray-300 rounded-md"
+                />
+                <textarea
+                  value={markdown}
+                  onChange={(e) => setMarkdown(e.target.value)}
+                  className="w-full h-full border border-gray-300 p-4 rounded-md resize-none"
+                  placeholder="Edit LaTeX content here..."
+                />
+              </div>
+
+              {/* Right Side - Rendered LaTeX Preview */}
+              <MathJaxContext config={mathJaxConfig}>
+                <div className="w-1/2 p-6 bg-white flex flex-col">
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-lg font-semibold">LaTeX Preview</h3>
+                    <button
+                      onClick={openInOverleaf}
+                      className="text-white bg-green-500 hover:bg-green-600 px-2 py-1 rounded text-sm"
+                    >
+                      Open in Overleaf
+                    </button>
+                  </div>
+                  <div className="flex-1 overflow-auto p-4 border border-gray-200 rounded-md bg-gray-50">
+                    <MathJax dynamic>{markdown}</MathJax>
+                  </div>
+                  <div className="flex justify-end mt-4">
+                    <button
+                      onClick={() => setIsEditModalOpen(false)}
+                      className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400 mr-2"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={handleEditRecord}
+                      className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+                    >
+                      Save Changes
+                    </button>
+                  </div>
+                </div>
+              </MathJaxContext>
+            </div>
+          </div>
+        )}
       </div>
     </Layout>
   );
 }
 
-export default RequestPage;
+export default CrudPage;
