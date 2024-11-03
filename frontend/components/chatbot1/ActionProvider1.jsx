@@ -86,17 +86,13 @@ class ActionProvider1 {
 
 
   handleQuestion5() {
-    const messages = [
-      'Could you provide me with information about your stock​?'
-    ];
-  
-    const delays = [500, 900, 1000, 1400];
-  
-    messages.forEach((message, index) => {
-      setTimeout(() => {
-        this.updateChatbotState(this.createChatBotMessage(message));
-      }, delays[index]);
-    });
+    const message = this.createChatBotMessage(
+      'Could you provide me with information about your stock?',
+      {
+        widget: "paymentButton",
+      }
+    );
+    this.updateChatbotState(message);
   }
 
   handleQuestion6() {
