@@ -152,6 +152,8 @@ if(showDb===true){
           <Button className='w-full bg-red-500 text-white cursor-none rounded-lg px-5 py-3' onClick={() => {
             dispatch(SettingActions.setShowDb(true));
             dispatch(SettingActions.setUploadedFile(null));
+            setShowImage3(false);
+            setShowImage5(false);
            // setShowDb(true);
           }}>
           </Button>
@@ -166,6 +168,7 @@ if(showDb===true){
           </Button>
 
           <Button className='w-full bg-[#f5f6f6] text-white cursor-none rounded-lg px-5 py-3 mt-1' onClick={() => {
+            dispatch(SettingActions.setShowDb(false));
             setShowImage5(true);
           }}>
           </Button>
